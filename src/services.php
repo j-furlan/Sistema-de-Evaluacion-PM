@@ -13,7 +13,7 @@
                             <a class="d-block" href="index.html" rel="home"><img class="d-block" src="../assets/images/logo.png" alt="logo"></a>
                         </div><!-- .site-branding -->
 
-                        <<?php include('../layout/nav.php'); ?>
+                        <?php include('../layout/nav.php'); ?>
 
                         <div class="hamburger-menu d-lg-none">
                             <span></span>
