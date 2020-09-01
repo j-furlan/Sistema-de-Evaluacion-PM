@@ -1,24 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Hello World</title>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php include('../layout/head.php'); ?>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="css/swiper.min.css">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-    <script src="js/custom.js"></script>
-</head>
 <body>
     <header class="site-header">
         <div class="nav-bar">
@@ -26,22 +10,10 @@
                 <div class="row">
                     <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="site-branding d-flex align-items-center">
-                           <a class="d-block" href="index.html" rel="home"><img class="d-block" src="images/logo.png" alt="logo"></a>
+                           <a class="d-block" href="dashboard.php" rel="home"><img class="d-block" src="../assets/images/logo.png" alt="logo"></a>
                         </div><!-- .site-branding -->
 
-                        <nav class="site-navigation d-flex justify-content-end align-items-center">
-                            <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center">
-                                <li class="current-menu-item"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="news.html">News</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-
-                                <li class="call-btn button gradient-bg mt-3 mt-md-0">
-                                    <a class="d-flex justify-content-center align-items-center" href="#"><img src="images/emergency-call.png"> +34 586 778 8892</a>
-                                </li>
-                            </ul>
-                        </nav><!-- .site-navigation -->
+                        <?php include('../layout/nav.php'); ?>
 
                         <div class="hamburger-menu d-lg-none">
                             <span></span>
@@ -56,7 +28,7 @@
 
         <div class="swiper-container hero-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide hero-content-wrap" style="background-image: url('images/hero.jpg')">
+                <div class="swiper-slide hero-content-wrap" style="background-image: url('../assets/images/hero.jpg')">
                     <div class="hero-content-overlay position-absolute w-100 h-100">
                         <div class="container h-100">
                             <div class="row h-100">
@@ -78,7 +50,7 @@
                     </div><!-- .hero-content-overlay -->
                 </div><!-- .hero-content-wrap -->
 
-                <div class="swiper-slide hero-content-wrap" style="background-image: url('images/hero.jpg')">
+                <div class="swiper-slide hero-content-wrap" style="background-image: url('../assets/images/hero.jpg')">
                     <div class="hero-content-overlay position-absolute w-100 h-100">
                         <div class="container h-100">
                             <div class="row h-100">
@@ -100,7 +72,7 @@
                     </div><!-- .hero-content-overlay -->
                 </div><!-- .hero-content-wrap -->
 
-                <div class="swiper-slide hero-content-wrap" style="background-image: url('images/hero.jpg')">
+                <div class="swiper-slide hero-content-wrap" style="background-image: url('../assets/images/hero.jpg')">
                     <div class="hero-content-overlay position-absolute w-100 h-100">
                         <div class="container h-100">
                             <div class="row h-100">
@@ -150,7 +122,7 @@
                         <h2 class="d-flex align-items-center">Emergency</h2>
 
                         <div class="call-btn button gradient-bg">
-                            <a class="d-flex justify-content-center align-items-center" href="#"><img src="images/emergency-call.png"> +34 586 778 8892</a>
+                            <a class="d-flex justify-content-center align-items-center" href="#"><img src="../assets/images/emergency-call.png"> +34 586 778 8892</a>
                         </div>
 
                         <p>Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. Donec males uada lorem maximus mauris sceler isque, at rutrum nulla.</p>
@@ -198,7 +170,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/cardiogram.png" alt="">
+                                        <img src="../assets/images/cardiogram.png" alt="">
 
                                         <h3>Cardioology</h3>
                                     </header>
@@ -216,7 +188,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/stomach-2.png" alt="">
+                                        <img src="../assets/images/stomach-2.png" alt="">
 
                                         <h3>Gastroenterology</h3>
                                     </header>
@@ -234,7 +206,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/blood-sample-2.png" alt="">
+                                        <img src="../assets/images/blood-sample-2.png" alt="">
 
                                         <h3>Medical Lab</h3>
                                     </header>
@@ -252,7 +224,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/teeth.png" alt="">
+                                        <img src="../assets/images/teeth.png" alt="">
 
                                         <h3>Dental Care</h3>
                                     </header>
@@ -270,7 +242,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/stretcher.png" alt="">
+                                        <img src="../assets/images/stretcher.png" alt="">
 
                                         <h3>Surgery</h3>
                                     </header>
@@ -288,7 +260,7 @@
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/scanner.png" alt="">
+                                        <img src="../assets/images/scanner.png" alt="">
 
                                         <h3>Neurology</h3>
                                     </header>
@@ -306,7 +278,7 @@
                             <div class="col-12 col-md-6 col-lg-4 mb-md-0">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/bones.png" alt="">
+                                        <img src="../assets/images/bones.png" alt="">
 
                                         <h3>Orthopaedy</h3>
                                     </header>
@@ -324,7 +296,7 @@
                             <div class="col-12 col-md-6 col-lg-4 mb-lg-0">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/blood-donation-2.png" alt="">
+                                        <img src="../assets/images/blood-donation-2.png" alt="">
 
                                         <h3>Pediatry</h3>
                                     </header>
@@ -342,7 +314,7 @@
                             <div class="col-12 col-md-6 col-lg-4 mb-0">
                                 <div class="our-departments-cont">
                                     <header class="entry-header d-flex flex-wrap align-items-center">
-                                        <img src="images/glasses.png" alt="">
+                                        <img src="../assets/images/glasses.png" alt="">
 
                                         <h3>Ophthalmology</h3>
                                     </header>
@@ -387,7 +359,7 @@
 
                                         <div class="entry-footer">
                                             <figure class="user-avatar">
-                                                <img src="images/user-1.jpg" alt="">
+                                                <img src="../assets/images/user-1.jpg" alt="">
                                             </figure><!-- .user-avatar -->
 
                                             <h3 class="testimonial-user">Russell Stephens <span>University in UK</span></h3>
@@ -401,7 +373,7 @@
 
                                         <div class="entry-footer">
                                             <figure class="user-avatar">
-                                                <img src="images/user-2.jpg" alt="">
+                                                <img src="../assets/images/user-2.jpg" alt="">
                                             </figure><!-- .user-avatar -->
 
                                             <h3 class="testimonial-user">Russell Stephens <span>University in UK</span></h3>
@@ -415,7 +387,7 @@
 
                                         <div class="entry-footer">
                                             <figure class="user-avatar">
-                                                <img src="images/user-3.jpg" alt="">
+                                                <img src="../assets/images/user-3.jpg" alt="">
                                             </figure><!-- .user-avatar -->
 
                                             <h3 class="testimonial-user">Russell Stephens <span>University in UK</span></h3>
@@ -429,7 +401,7 @@
 
                                         <div class="entry-footer">
                                             <figure class="user-avatar">
-                                                <img src="images/user-4.jpg" alt="">
+                                                <img src="../assets/images/user-4.jpg" alt="">
                                             </figure><!-- .user-avatar -->
 
                                             <h3 class="testimonial-user">Russell Stephens <span>University in UK</span></h3>
@@ -464,7 +436,7 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="the-news-wrap">
                                 <figure class="post-thumbnail">
-                                    <a href="#"><img src="images/news-1.png" alt=""></a>
+                                    <a href="#"><img src="../assets/images/news-1.png" alt=""></a>
                                 </figure>
 
                                 <header class="entry-header">
@@ -488,7 +460,7 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="the-news-wrap">
                                 <figure class="post-thumbnail">
-                                    <a href="#"><img src="images/news-2.png" alt=""></a>
+                                    <a href="#"><img src="../assets/images/news-2.png" alt=""></a>
                                 </figure>
 
                                 <header class="entry-header">
@@ -512,7 +484,7 @@
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="the-news-wrap">
                                 <figure class="post-thumbnail">
-                                    <a href="#"><img src="images/news-3.png" alt=""></a>
+                                    <a href="#"><img src="../assets/images/news-3.png" alt=""></a>
                                 </figure>
 
                                 <header class="entry-header">
@@ -553,60 +525,9 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-widgets">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="foot-about">
-                            <h2><a href="#"><img src="images/logo.png" alt=""></a></h2>
+    <?php include('../layout/footer.php'); ?>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien.</p>
+<?php include('../layout/scripts.php'); ?>
 
-                            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                        </div><!-- .foot-about -->
-                    </div><!-- .col -->
-
-                    <div class="col-12 col-md-6 col-lg-4 mt-5 mt-md-0">
-                        <div class="foot-contact">
-                            <h2>Contact</h2>
-
-                            <ul class="p-0 m-0">
-                                <li><span>Addtress:</span>Mitlton Str. 26-27 London UK</li>
-                                <li><span>Phone:</span>+53 345 7953 32453</li>
-                                <li><span>Email:</span>yourmail@gmail.com</li>
-                            </ul>
-                        </div>
-                    </div><!-- .col -->
-
-                    <div class="col-12 col-md-6 col-lg-4 mt-5 mt-md-0">
-                        <div class="foot-links">
-                            <h2>Usefull Links</h2>
-
-                            <ul class="p-0 m-0">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="#">Departments</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="news.html">FAQ</a></li>
-                                <li><a href="services.html">Testimonials</a></li>
-                            </ul>
-                        </div><!-- .foot-links -->
-                    </div><!-- .col -->
-                </div><!-- .row -->
-            </div><!-- .container -->
-        </div><!-- .footer-widgets -->
-    </footer><!-- .site-footer -->
-
-    <script type='text/javascript' src='js/jquery.js'></script>
-    <script type='text/javascript' src='js/jquery.collapsible.min.js'></script>
-    <script type='text/javascript' src='js/swiper.min.js'></script>
-    <script type='text/javascript' src='js/jquery.countdown.min.js'></script>
-    <script type='text/javascript' src='js/circle-progress.min.js'></script>
-    <script type='text/javascript' src='js/jquery.countTo.min.js'></script>
-    <script type='text/javascript' src='js/jquery.barfiller.js'></script>
-    <script type='text/javascript' src='js/custom.js'></script>
 </body>
 </html>
