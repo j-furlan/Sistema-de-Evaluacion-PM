@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="./assets/css/swiper.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="js/custom.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
 </head>
 <body>
     <header class="site-header">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="site-branding d-flex align-items-center">
-                           <a class="d-block" href="#" rel="home"><img class="d-block" src="images/logo.png" alt="logo"></a>
+                           <a class="d-block" href="#" rel="home"><img class="d-block" src="./assets/images/logo.png" alt="logo"></a>
                         </div><!-- .site-branding -->
                         <a class="btn button d-block btn-danger button-lg" href="./src/dashboard.php">DASHBOARD</a>
 
@@ -88,7 +88,7 @@
                             <div class=" d-flex flex-wrap align-items-center">
                                 <div class="our-departments-cont">
                                     <header class="entry-header">
-                                        <img src="images/glasses.png" alt="">
+                                        <img src="./assets/images/glasses.png" alt="">
 
                                         <h3>Ophthalmology</h3>
                                     </header>
@@ -116,13 +116,13 @@
         </div>
     </div>
 
-    <script type='text/javascript' src='js/jquery.js'></script>
-    <script type='text/javascript' src='js/jquery.collapsible.min.js'></script>
-    <script type='text/javascript' src='js/swiper.min.js'></script>
-    <script type='text/javascript' src='js/jquery.countdown.min.js'></script>
-    <script type='text/javascript' src='js/circle-progress.min.js'></script>
-    <script type='text/javascript' src='js/jquery.countTo.min.js'></script>
-    <script type='text/javascript' src='js/jquery.barfiller.js'></script>
-    <script type='text/javascript' src='js/custom.js'></script>
+    <script type='text/javascript' src='./assets/js/jquery.js'></script>
+    <script type='text/javascript' src='./assets/js/jquery.collapsible.min.js'></script>
+    <script type='text/javascript' src='./assets/js/swiper.min.js'></script>
+    <script type='text/javascript' src='./assets/js/jquery.countdown.min.js'></script>
+    <script type='text/javascript' src='./assets/js/circle-progress.min.js'></script>
+    <script type='text/javascript' src='./assets/js/jquery.countTo.min.js'></script>
+    <script type='text/javascript' src='./assets/js/jquery.barfiller.js'></script>
+    <script type='text/javascript' src='./assets/js/custom.js'></script>
 </body>
 </html>
