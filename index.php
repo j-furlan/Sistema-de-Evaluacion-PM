@@ -59,6 +59,7 @@
 
                             <div class="row mb-3 px-3 justify-content-end">
                                <button type="submit" class="button gradient-bg px-lg-5">Login</button>
+                               <a class="button gradient-bg px-lg-5" href="./src/dashboard.php">GO HOME</a>
                            </div>
 
                             <div class="row mb-4 px-3">
