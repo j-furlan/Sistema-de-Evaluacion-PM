@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Hello World</title>
+    <title>SisEval</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,7 +10,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./login.css">
@@ -54,7 +55,7 @@
                                 <label class="custom-control-label text-sm">Remember me</label>
                               </div>
 
-                              <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                              <a href="#" class="ml-auto mb-0 text-sm"> <small> Forgot Password?</small></a>
                             </div>
 
                             <div class="row mb-3 px-3 justify-content-end">
@@ -63,13 +64,13 @@
                            </div>
 
                             <div class="row mb-4 px-3">
-                               <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small>
+                               <small>Don't have an account? <a class="text-danger ">Register</a></small>
                            </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="footer py-4">
+                <div class="footer py-4" >
                     <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2019. All rights reserved.</small>
                         <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span> <span class="fa fa-google-plus mr-4 text-sm"></span> <span class="fa fa-linkedin mr-4 text-sm"></span> <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span> </div>
                     </div>
