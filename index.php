@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <!-- Icons -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
 
 </head>
 
@@ -25,8 +25,8 @@
                 <div class="row d-flex">
                     <div class="col-lg-6">
                         <div class="card1 pb-5">
-                            <div class="row"> <img src="../assets/images/logo.png" class="logo"> </div>
-                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="../assets/images/LogIn.svg" class="image"> </div>
+                            <div class="row"> <img src="./assets/images/logo.png" class="logo"> </div>
+                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="./assets/images/LogIn.svg" class="image"> </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -62,7 +62,7 @@
 
                             <div class="row mb-3 px-3 justify-content-end">
                                <button type="submit" class="button gradient-bg px-lg-5 mb-1" onclick="InicioDeSesion();">Login</button>
-                               <a class="button gradient-bg px-lg-5 mb-1" href="../src/dashboard.php">Ir a Inicio</a>
+                               <a class="button gradient-bg px-lg-5 mb-1" href="./src/dashboard.php">Ir a Inicio</a>
                            </div>
 
                             <div class="row mb-4 px-3">
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-<?php include('../layout/scripts.php'); ?>
+<?php include('./layout/scripts.php'); ?>
 </body>
 
 </html>
