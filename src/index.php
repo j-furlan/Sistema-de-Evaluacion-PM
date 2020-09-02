@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Icons -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
 
 </head>
 
@@ -25,59 +25,63 @@
                 <div class="row d-flex">
                     <div class="col-lg-6">
                         <div class="card1 pb-5">
-                            <div class="row"> <img src="./assets/images/logo.png" class="logo"> </div>
-                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="./assets/images/LogIn.svg" class="image"> </div>
+                            <div class="row"> <img src="../assets/images/logo.png" class="logo"> </div>
+                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="../assets/images/LogIn.svg" class="image"> </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-5">
 
-                            <div class="row px-3 mb-4">
+                            <div class="px-3 mb-4 d-flex justify-content-center">
                                 <div class="line"></div>
-                                 <small class="or text-center">Sign In</small>
+                                 <small class="or text-center">Ingresar</small>
                                 <div class="line"></div>
                             </div>
 
                             <div class="row px-3"> 
-                              <label class="mb-1"><h6 class="mb-0 text-sm">Email Address</h6></label>
-                              <input class="mb-4 form-control" type="text" name="email" placeholder="Enter a valid email address">
+                              <label class="mb-1"><h6 class="mb-0 text-sm">Correo Electrónico</h6></label>
+                              <input id="TxtEmail" class="mb-4 form-control" type="text" name="email" placeholder="Ingrese un correo electrónico valido">
                             </div>
 
                             <div class="row px-3 ">
-                              <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label>
-                              <input class="mb-2 form-control" type="password" name="password" placeholder="Enter password">
+                              <label class="mb-1"><h6 class="mb-0 text-sm">Contraseña</h6></label>
+                              <input id="TxtPassword" class="mb-2 form-control" type="password" name="password" placeholder="Ingrese la contraseña">
                             </div>
 
                             <div class="row px-3 mb-4">
 
                               <div class="custom-control custom-checkbox custom-control-inline">
                                 <input type="checkbox" name="chk" class="custom-control-input">
-                                <label class="custom-control-label text-sm">Remember me</label>
+                                <label class="custom-control-label text-sm">Recuerdame</label>
                               </div>
 
-                              <a href="#" class="ml-auto mb-0 text-sm"> <small> Forgot Password?</small></a>
+                              <a href="#" class="ml-auto mb-0 text-sm"> <small>¿Olvidaste tu contraseña?</small></a>
                             </div>
 
+                            <div id="alerta"class="alert alert-danger alert-dismissible fade show d-none" role="alert"></div>
+
                             <div class="row mb-3 px-3 justify-content-end">
-                               <button type="submit" class="button gradient-bg px-lg-5">Login</button>
-                               <a class="button gradient-bg px-lg-5" href="./src/dashboard.php">GO HOME</a>
+                               <button type="submit" class="button gradient-bg px-lg-5 mb-1" onclick="InicioDeSesion();">Login</button>
+                               <a class="button gradient-bg px-lg-5 mb-1" href="../src/dashboard.php">Ir a Inicio</a>
                            </div>
 
                             <div class="row mb-4 px-3">
-                               <small>Don't have an account? <a class="text-danger ">Register</a></small>
+                               <small>¿No tienes una cuenta? <a class="text-danger">Registrarse</a></small>
                            </div>
 
                         </div>
                     </div>
                 </div>
                 <div class="footer py-4" >
-                    <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2019. All rights reserved.</small>
+                    <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020. Todos los derechos reservados.</small>
                         <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span> <span class="fa fa-google-plus mr-4 text-sm"></span> <span class="fa fa-linkedin mr-4 text-sm"></span> <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span> </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+<?php include('../layout/scripts.php'); ?>
 </body>
 
 </html>

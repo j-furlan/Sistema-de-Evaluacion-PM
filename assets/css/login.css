@@ -34,7 +34,7 @@ body {
 }
 
 .border-line {
-    border-right: 1px solid #EEEEEE
+    border-right: 1px solid #EEEEEE;
 }
 
 .line {
@@ -45,7 +45,7 @@ body {
 }
 
 .or {
-    width: 10%;
+    
     font-weight: bold
 }
 
