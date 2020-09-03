@@ -19,7 +19,9 @@ var settings = {
 
     $.each(response, function(index, data) {
         if(data.IntResultado > 0){
-            alert("El token del usuario es: " + data.TxtToken);
+            sessionStorage.setItem('token',data.TxtToken);
+            var token = sessionStorage.getItem('token');
+            alert("Valor en variable de sesion es: " + token);
             window.location.href="./src/dashboard.php";
         }else{
             var alerta = document.getElementById("alerta");
