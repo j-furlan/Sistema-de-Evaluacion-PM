@@ -20,7 +20,7 @@ var settings = {
     $.each(response, function(index, data) {
         if(data.IntResultado > 0){
             alert("El token del usuario es: " + data.TxtToken);
-            window.location.href="../src/dashboard.php";
+            window.location.href="./src/dashboard.php";
         }else{
             var alerta = document.getElementById("alerta");
             alerta.classList.remove("d-none");
