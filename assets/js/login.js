@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/api/"
+var UrlApi = "http://localhost:53207/API/" // cambiar puerto de nuestra API 
 
 
 function InicioDeSesion() {
