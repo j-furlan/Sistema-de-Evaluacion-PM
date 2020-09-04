@@ -1,5 +1,5 @@
 <head>
-    <title>Hello World</title>
+    <title>HOME</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,3 +16,4 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+

@@ -3,7 +3,7 @@
 
 <?php include('../layout/head.php'); ?>
 
-<body>
+<body> 
     <header class="site-header">
         <div class="nav-bar">
             <div class="container">
