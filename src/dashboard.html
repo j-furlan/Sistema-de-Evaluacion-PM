@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
-<body>
+<body onload="MenuUsuario();">
     <header class="site-header">
         <div class="nav-bar">
             <div class="container">
@@ -31,19 +31,20 @@
                         </div>
                         <!-- .site-branding -->
 
-                        <nav class="site-navigation d-flex justify-content-end align-items-center">
-                            <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center">
+                        <nav class="site-navigation d-flex justify-content-end align-items-center" id="Menu">
+                                                      
+                            <!-- <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center" >
                                 <li class="current-menu-item"><a href="dashboard.html">Home</a></li>
                                 <li><a href="about.html">About us</a></li>
                                 <li><a href="services.html">Services</a></li>
                                 <li><a href="news.html">News</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                                 <li><a href="elements.html">Elements</a></li>
-
                                 <li class="call-btn button gradient-bg mt-3 mt-md-0">
-                                    <a class="d-flex justify-content-center align-items-center" href="#"><img src="../assets/images/emergency-call.png"> +34 586 778 8892</a>
+                                    <a class="d-flex justify-content-center align-items-center" href="#"><img src="../assets/images/emergency-call.png"> +502 1234 1234</a>
                                 </li>
                             </ul>
+                             -->
                         </nav>
 
                         <div class="hamburger-menu d-lg-none">
@@ -656,6 +657,9 @@
         <!-- .footer-widgets -->
     </footer>
     <!-- .site-footer -->
+
+    <script type="text/javascript" src="../assets/js/MenuUsuario.js"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
