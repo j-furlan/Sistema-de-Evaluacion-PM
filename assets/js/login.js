@@ -22,7 +22,7 @@ var settings = {
             sessionStorage.setItem('token',data.TxtToken);
             var token = sessionStorage.getItem('token');
             alert("Valor en variable de sesion es: " + token);
-            window.location.href="./src/dashboard.php";
+            window.location.href="./src/dashboard.html";
         }else{
             var alerta = document.getElementById("alerta");
             alerta.classList.remove("d-none");
