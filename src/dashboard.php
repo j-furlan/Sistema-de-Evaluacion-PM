@@ -15,7 +15,29 @@
 
                         <?php include('../layout/nav.php'); ?>
 
-                        <div class="hamburger-menu d-lg-none">
+
+                        <nav>
+                            <ul id="menu">
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Modulos</a>
+                                <ul>
+                                <li><a href="#">Opcion 1</a></li>
+                                <li><a href="#">Opcion 2</a></li>
+                                <li><a href="#">Opcion 3</a></li>
+                                </ul>  
+                            </li>
+                            <li><a href="#">Evaluaciones</a></li>
+                            <li><a href="#">Contacto</a></li>
+                            </ul>
+                        </nav>
+
+
+
+
+
+
+
+                        <div class="hamburger-menu d-lg-none">                            
                             <span></span>
                             <span></span>
                             <span></span>
