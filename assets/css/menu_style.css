@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;                       
+    }
+    .header_menu{
+    font-family: Helvetica;
+    width: 1600px;
+    margin: -70px 20px 50px 500px;
+    text-decoration: none;
+    }
+    #menu ul{
+    list-style: none;
+    text-decoration: none;
+    }
+
+    #menu li{
+        margin-left: 60px auto;
+    }
+    #menu li>a{
+    /*background-color: grey;*/
+    color: rgb(39, 39, 39); /*color del texto*/
+    padding: 2px;
+    display: block;
+    text-decoration: none; 
+    min-width: 100px;
+    list-style:none
+    }
+    #menu li>a:hover{
+    color: rgb(255, 255, 255);   /*color de la letra al tener el curso sobrepuesto*/
+    background-color: #2264c7; /*color del fondo al tener el curso sobrepuesto*/
+    
+    }
+    #menu>li{
+    float: left;
+    text-align:center
+    
+    }
+    #menu>li>ul{
+    display: none;
+    
+    }
+    #menu>li:hover>ul {
+    display:block;
+    
+    }
+
+    #lis{ list-style:none; margin-left: 40px}
