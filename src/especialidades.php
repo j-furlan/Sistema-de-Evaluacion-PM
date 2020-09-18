@@ -33,7 +33,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Pagina de Empleados</h1>
+          <h1 class="h3 mb-4 text-gray-800">Pagina de Especialidades</h1>
             
 
         </div>

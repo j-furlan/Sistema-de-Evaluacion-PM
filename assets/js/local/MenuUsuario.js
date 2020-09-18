@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/" // cambiar puerto de nuestra API
+var UrlApi = "http://localhost:53207/API/" // cambiar puerto de nuestra API
 
 function MenuUsuario() {
     var settings = {
@@ -16,6 +16,12 @@ function MenuUsuario() {
     console.log(sessionStorage.getItem('token'));
 
     $.ajax(settings).done(function(response) {
+console.log(response);
+if(response.length == 0){
+alert("Meno no disponible");
+}
+else{
+    alert("este es el menu");
 
         $.each(response, function(index, data) {
             var IdMenuPadre = data.IdMenuPadre;
@@ -35,11 +41,12 @@ function MenuUsuario() {
             } else {
                 var item = "<a class='collapse-item' href='" + data.TxtLink + ".php'>" + data.TxtNombre + "</a>";
             }
-
+console.log(item);
             $(opcion).appendTo(".MenuUsuario");            
             $(item).appendTo("#" + IdMenuPadre);
 
         });
+    }
 
     });
 
