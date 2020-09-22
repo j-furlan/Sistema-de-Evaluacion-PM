@@ -13,15 +13,15 @@ function MenuUsuario() {
             "IdModulo": 1
         }),
     };
-    console.log(sessionStorage.getItem('token'));
+    //console.log(sessionStorage.getItem('token'));
 
     $.ajax(settings).done(function(response) {
-console.log(response);
+//console.log(response);
 if(response.length == 0){
 alert("Meno no disponible");
 }
 else{
-    alert("este es el menu");
+    //alert("este es el menu");
 
         $.each(response, function(index, data) {
             var IdMenuPadre = data.IdMenuPadre;
@@ -41,7 +41,7 @@ else{
             } else {
                 var item = "<a class='collapse-item' href='" + data.TxtLink + ".php'>" + data.TxtNombre + "</a>";
             }
-console.log(item);
+//console.log(item);
             $(opcion).appendTo(".MenuUsuario");            
             $(item).appendTo("#" + IdMenuPadre);
 
