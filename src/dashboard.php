@@ -12,6 +12,14 @@
 
 <body id="page-top">
 
+
+<script type="text/javascript">
+  window.onload= function(){
+    myNotification.showNotification('fas fa-smile', 'info', '¡Bienvenido Administrador!', 'No olvides revisar tus notificaciones.');
+  }
+                
+</script>
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 

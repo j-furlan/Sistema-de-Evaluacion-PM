@@ -5,11 +5,11 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>SB Admin 2 - Tables</title>
+  <title>SB Admin 2 - Usuarios</title>
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
 </head>
+
 
 <body id="page-top" onload="ObtenerUsuarios();">
 
@@ -36,7 +36,7 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
 
-          <!-- DataTales Example -->
+          <!-- DataTables Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="row">
@@ -46,14 +46,13 @@
                     </div>
                   <div class="col ml-2">
                       <a class="float-right" data-toggle="modal" data-target="#AddUserModal"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
-    
                   </div>
-                  
                 </div>
             </div>
+
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered DatosUsario" id="" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosUsuario" id="" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>Nombres</th>
@@ -62,14 +61,10 @@
                         <th colspan="2">Opciones</th>
                         </tr>
                       </thead>
-                  <tbody>
-                    
-                    
-                  </tbody>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
-            
           </div>
 
         </div>
@@ -78,17 +73,15 @@
       </div>
       <!-- End of Main Content -->
 
-
-
     </div>
     <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
 
-        <!-- Footer -->
-        <?php include '../layout/footer.html'; ?>
-      <!-- End of Footer -->
+  <!-- Footer -->
+  <?php include '../layout/footer.html'; ?>
+  <!-- End of Footer -->
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -100,15 +93,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Selecciona "Cerrar Sesión" debajo si deseas salir.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="../index.html">Cerrar Sesión</a>
         </div>
       </div>
     </div>
@@ -148,7 +141,7 @@
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>
-              <button type="button" class="btn btn-primary" onclick="Guardar();">Guardar</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacion">Guardar</button>
             </div>
           </form>
         </div>
@@ -159,7 +152,28 @@
     </div>
   </div>
 
- <?php include '../layout/scripts.html'; ?>
+  <!-- Modal Confirmación -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="ModalConfirmacion">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estas seguro de guardar cambios?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="Guardar();" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <?php include '../layout/scripts.html'; ?>
   <!-- Page level plugins -->
   <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -167,14 +181,6 @@
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
   <script src="../assets/js/local/usuarios.js"></script>
-  <script>
-    $(document).ready(function(){
-
-      $("#EditarUsuario").on("click", function(){
-     alert("clicked");
-    });
-   });
-  </script>
 
 </body>
 

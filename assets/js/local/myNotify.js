@@ -9,8 +9,8 @@ myNotification = {
 
         }, {
             type: type,
-            timer: 8000, //tiempo que se mostrara
-            //showProgressbar: true, //si queres que indique progreso descomenta esta linea
+            timer: 500, //tiempo que se mostrara
+            showProgressbar: true, //si queres que indique progreso descomenta esta linea
             animate: {
                 enter: 'animate__animated animate__bounce', //animacion al ingresar
                 exit: 'animate__animated fadeOutUp'

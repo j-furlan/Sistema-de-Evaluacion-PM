@@ -1,4 +1,6 @@
-var UrlApi = "http://localhost:53207/api/";
+var UrlApi = "http://localhost:64315/API/";
+var ModalConfirmación = document.getElementById("ModalConfirmacion");
+var RegistroEliminar = "";
 
 function AgregarUsuario() {
   var settings = {
@@ -10,7 +12,6 @@ function AgregarUsuario() {
     },
     "data": JSON.stringify
       ({
-
         "TxtNombres": $("#TxtNombres").val(),
         "TxtApellidos": $("#TxtApellidos").val(),
         "TxtDireccion": $("#TxtDireccion").val(),
@@ -21,10 +22,19 @@ function AgregarUsuario() {
   };
 
   $.ajax(settings).done(function (response) {
-    alert("Todo Bien!!, el usuario fue creado correctamente");
-    LimpiarFormulario();
-    ObtenerUsuarios();
 
+    $.each(response, function (index, data)
+    {
+      if (data.Resultado > 0) {
+        myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Usuario se agregó correctamente.');
+        /* alert("Ok, se logro eliminar correctamente el usuario"); */
+        LimpiarFormulario();
+        ObtenerUsuarios();
+      }
+      else {
+        myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se puede agregar el usuario');
+      }
+    });
   });
 }
 
@@ -37,17 +47,22 @@ function LimpiarFormulario() {
 }
 
 function ObtenerUsuarios() {
+  $(".DatosUsuario td").remove();
 
-  $(".DatosUsario td").remove();
   var settings = {
     "url": UrlApi + "ObtenerUsuarios",
-    "method": "GET",
+    "method": "POST",
     "timeout": 0,
+    "headers": {
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+      "TxtToken": sessionStorage.getItem('token')
+    }),
   };
-
   $.ajax(settings).done(function (response) {
-console.log(response);
-console.log(sessionStorage.getItem('token'));
+    console.log(response);
+    console.log(sessionStorage.getItem('token'));
     LimpiarFormulario();
 
     $.each(response, function (index, data)
@@ -56,8 +71,10 @@ console.log(sessionStorage.getItem('token'));
         "</td><td>" + data.TxtDireccion +
         "</td><td>" + data.TxtEmail +
         "</td><td class='text-center'><a href='#' id='EditarUsuario' onclick='ObtenerDatosUsuario(" + data.IdUsuario + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-        "</td><td class='text-center'><a href='#' onclick='EliminarUsuario(" + data.IdUsuario + ");'><i class='fas fa-user-times text-danger'></i></a> </tr>";
-      $(fila).appendTo(".DatosUsario");
+        "</td><td class='text-center'><a href='#' onclick='Eliminar("+ data.IdUsuario+");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+/*         "</td><td class='text-center'><a href='#' onclick='EliminarUsuario(" + data.IdUsuario + ");'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+ */
+      $(fila).appendTo(".DatosUsuario");
     });
   });
 }
@@ -72,7 +89,8 @@ function EliminarUsuario(IdUsuario) {
     },
     "data": JSON.stringify
       ({
-        "IdUsuario": IdUsuario
+        "IdUsuario": IdUsuario,
+        "TxtToken": sessionStorage.getItem('token')
       }),
   };
 
@@ -80,12 +98,16 @@ function EliminarUsuario(IdUsuario) {
     $.each(response, function (index, data)
     {
       if (data.Resultado > 0) {
-        alert("Ok, se logro eliminar correctamente el usuario");
+
+        myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Usuario se eliminó correctamente.');
         LimpiarFormulario();
         ObtenerUsuarios();
+
       }
       else {
-        alert("Ups! Algo no cuadro, no se puedo eliminar el usuario");
+
+        myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el usuario');
+
       }
     });
   });
@@ -101,7 +123,8 @@ function ObtenerDatosUsuario(IdUsuario) {
     },
     "data": JSON.stringify
       ({
-        "IdUsuario": IdUsuario
+        "IdUsuario": IdUsuario,
+        "TxtToken": sessionStorage.getItem('token')
       }),
   };
 
@@ -139,6 +162,7 @@ function ActualizarUsuario() {
         "TxtDireccion": $("#TxtDireccion").val(),
         "TxtEmail": $("#TxtEmail").val(),
         "TxtPassword": $("#TxtPassword").val(),
+        "TxtToken": sessionStorage.getItem('token')
       }),
   };
 
@@ -146,12 +170,16 @@ function ActualizarUsuario() {
     $.each(response, function (index, data)
     {
       if (data.Resultado > 0) {
-        alert("Yay!!, se logro actualizar correctamente el usuario");
+
+        myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Usuario se modificó correctamente.');
         LimpiarFormulario();
         ObtenerUsuarios();
+
       }
       else {
-        alert("Oh no! Algo no cuadro, no se puedo actualizar el usuario");
+
+        myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el usuario');
+
       }
     });
   });
@@ -159,11 +187,22 @@ function ActualizarUsuario() {
 }
 
 function Guardar() {
-  if ($("#IdOculto").val() > 0)
+
+  if($("#IdOculto").val() == "Eliminar")
+  {
+    EliminarUsuario(RegistroEliminar);
+    $("#IdOculto").val("");
+  } 
+  else if ($("#IdOculto").val() > 0)
   {
     ActualizarUsuario();
   }
   else {
     AgregarUsuario();
   }
+}
+
+function Eliminar(IdUsuario) {
+  $("#IdOculto").val("Eliminar");
+  RegistroEliminar = IdUsuario;
 }
