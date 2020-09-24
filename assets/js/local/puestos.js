@@ -1,6 +1,6 @@
-var UrlApi = "http://localhost:53207/api/";
+var UrlApi = "http://localhost:64315/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
-var PuestoEliminar = "";
+var RegistroEliminar = "";
 
 
 function AgregarPuesto() {
@@ -21,14 +21,13 @@ function AgregarPuesto() {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Puesto se agregó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El puesto se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerPuestos();
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el Puesto');
             }
         });
-
 
     });
 }
@@ -38,10 +37,11 @@ function LimpiarFormulario() {
 }
 
 function ObtenerPuestos() {
-    $("#DatosPuestos td").remove();
+    $(".DatosPuestos td").remove();
+
     var settings = {
         "url": UrlApi + "ObtenerPuestos",
-        "method": "GET",
+        "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
@@ -50,9 +50,6 @@ function ObtenerPuestos() {
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
-    console.log($("#TxtToken").val());
-
-
     $.ajax(settings).done(function(response) {
 
         LimpiarFormulario();
@@ -61,10 +58,10 @@ function ObtenerPuestos() {
             var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtPuesto +
                 "</td><td>" + data.FechaIngreso +
-                "<td class='text-center'><a href='#' id='EditarEspecialidad' onclick='ObtenerDatosPuesto(" + data.IdPuesto + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
+                "<td class='text-center'><a href='#' id='EditarPuesto' onclick='ObtenerDatosPuesto(" + data.IdPuesto + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdPuesto + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
 
-            $(fila).appendTo("#DatosPuestos");
+            $(fila).appendTo(".DatosPuestos");
         });
     });
 }
@@ -86,11 +83,11 @@ function EliminarPuesto(IdPuesto) {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Puesto se agregó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El puesto se eliminó correctamente.');
                 LimpiarFormulario();
                 ObtenerPuestos();
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el Puesto');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el Puesto');
             }
         });
     });
@@ -117,6 +114,7 @@ function ObtenerDatosPuesto(IdPuesto) {
         $("#IdOculto").val(IdPuesto);
 
         $.each(response, function(index, data) {
+            
             $("#TxtPuesto").val(data.TxtPuesto);
 
         });
@@ -142,7 +140,7 @@ function ActualizarPuesto() {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Puesto se modificó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El puesto se modificó correctamente.');
 
                 LimpiarFormulario();
                 ObtenerPuestos();
@@ -157,10 +155,16 @@ function ActualizarPuesto() {
 
 function Guardar() {
     if ($("#IdOculto").val() == "Eliminar") {
-        EliminarPuesto(IdPuesto);
+        EliminarPuesto(RegistroEliminar);
+        $("#IdOculto").val("");
     } else if ($("#IdOculto").val() > 0) {
         ActualizarPuesto();
     } else {
         AgregarPuesto();
     }
+}
+
+function Eliminar(IdPuesto) {
+    $("#IdOculto").val("Eliminar");
+    RegistroEliminar = IdPuesto;
 }

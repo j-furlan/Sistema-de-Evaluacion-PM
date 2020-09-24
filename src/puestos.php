@@ -51,7 +51,7 @@
 
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered" id="DatosPuestos" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosPuestos" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>Id</th>
@@ -118,7 +118,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <form id="registroPuestos">
+        <form id="registroPuesto">
             <div class="form-group">
               <label>Puesto</label>
               <input type="text" class="form-control" id="TxtPuesto" placeholder="Nombre de Puesto">
@@ -159,6 +159,11 @@
 
   <?php include('../layout/scripts.html'); ?>
 
+  <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../assets/js/demo/datatables-demo.js"></script>
   <script src="../assets/js/local/puestos.js"></script>
 </body>
 
