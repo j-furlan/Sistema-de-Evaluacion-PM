@@ -1,6 +1,6 @@
-var UrlApi = "http://localhost:53207/api/";
+var UrlApi = "http://localhost:64315/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
-var RenglonEliminar = "";
+var RegistroEliminar = "";
 
 function AgregarRenglon() {
     var settings = {
@@ -35,10 +35,10 @@ function LimpiarFormulario() {
 }
 
 function ObtenerRenglones() {
-    $("#DatosRenglones td").remove();
+    $(".DatosRenglones td").remove();
     var settings = {
         "url": UrlApi + "ObtenerRenglones",
-        "method": "GET",
+        "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
@@ -56,9 +56,9 @@ function ObtenerRenglones() {
             var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtRenglon +
                 "</td><td>" + data.FechaIngreso +
-                "<td class='text-center'><a href='#' id='EditarEspecialidad' onclick='ObtenerDatosRenglon(" + data.IdRenglon + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
+                "<td class='text-center'><a href='#' id='EditarRenglones' onclick='ObtenerDatosRenglon(" + data.IdRenglon + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdRenglon + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
-            $(fila).appendTo("#DatosRenglones");
+            $(fila).appendTo(".DatosRenglones");
         });
     });
 }
@@ -138,9 +138,8 @@ function ActualizarRenglon() {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se modificó correctamente.');
-
                 LimpiarFormulario();
-                ObtenerRenglons();
+                ObtenerRenglones();
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el Renglon');
 
@@ -152,7 +151,7 @@ function ActualizarRenglon() {
 
 function Guardar() {
     if ($("#IdOculto").val() == "Eliminar") {
-        EliminarRenglon(RenglonEliminar);
+        EliminarRenglon(RegistroEliminar);
         $("#IdOculto").val("");
     } else if ($("#IdOculto").val() > 0) {
         ActualizarRenglon();

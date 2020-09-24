@@ -44,7 +44,7 @@
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarEmpleadoModal"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarEmpleadoModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
@@ -147,13 +147,13 @@
             <div class="form-row">
             <div class="form-group col-md-6">
               <label>Puesto</label>
-              <select id="SelectPuesto" class="form-control" onchange="MostrarSeleccion();">
+              <select id="SelectPuesto" class="form-control">
                 <option selected>Elegir...</option>
               </select>
             </div>
             <div class="form-group col-md-6">
               <label>Especialidad</label>
-              <select id="SelectEspecialidad" class="form-control" onchange="MostrarSeleccion();">
+              <select id="SelectEspecialidad" class="form-control">
                 <option selected>Elegir...</option>
               </select>
             </div>
@@ -161,20 +161,20 @@
             <div class="form-row">
             <div class="form-group col-md-6">
               <label>Servicio</label>
-              <select id="SelectServicio" class="form-control" onchange="MostrarSeleccion();">
+              <select id="SelectServicio" class="form-control">
                 <option selected>Elegir...</option>
               </select>
             </div>
             <div class="form-group col-md-6">
               <label>Renglon</label>
-              <select id="SelectRenglon" class="form-control" onchange="MostrarSeleccion();">
+              <select id="SelectRenglon" class="form-control">
                 <option selected>Elegir...</option>
               </select>
             </div>
             </div>
             <div class="form-group">
               <label>Institucion</label>
-              <select id="SelectInstitucion" class="form-control" onchange="MostrarSeleccion();">
+              <select id="SelectInstitucion" class="form-control">
                 <option selected>Elegir...</option>
                 <option value='1'>Ministerio de Salúd Pública</option>
               </select>

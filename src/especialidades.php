@@ -44,7 +44,7 @@
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarEspecialidadModal"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarEspecialidadModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>

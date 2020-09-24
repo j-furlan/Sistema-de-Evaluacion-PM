@@ -1,6 +1,6 @@
 var UrlApi = "http://localhost:64315/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
-var UsuarioEliminar = "";
+var RegistroEliminar = "";
 
 function AgregarEspecialidad() {
     var settings = {

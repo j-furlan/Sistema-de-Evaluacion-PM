@@ -69,7 +69,7 @@ function ObtenerEmpleados() {
         }),
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
+    
         console.log(sessionStorage.getItem('token'));
         LimpiarFormulario();
 
@@ -127,6 +127,7 @@ function EliminarEmpleado(IdEmpleado) {
 function ObtenerDatosEmpleado(IdEmpleado) {
     $(".opciones").remove();
     ObtenerDatos();
+    LimpiarFormulario();
 
 
     var settings = {
@@ -146,7 +147,6 @@ function ObtenerDatosEmpleado(IdEmpleado) {
     $.ajax(settings).done(function (response) {
         //mostra modal para editar especialidad
         $('#AgregarEmpleadoModal').modal('show');
-        LimpiarFormulario();
         $("#IdOculto").val(IdEmpleado);
 
         $.each(response, function (index, data) {
@@ -159,6 +159,13 @@ function ObtenerDatosEmpleado(IdEmpleado) {
             $("#SelectServicio option[value='" + data.IdServicio + "']").attr("selected", true);
             $("#SelectRenglon option[value='" + data.IdRenglon + "']").attr("selected", true);
             $("#SelectInstitucion option[value='" + data.IdInstitucion + "']").attr("selected", true);
+            console.log("Puesto" + data.IdPuesto);
+            console.log("Especialidad" + data.IdEspecialidad);
+            console.log("Servicio" + data.IdServicio);
+            console.log("Renglon" + data.IdRenglon);
+            console.log("Institucion" + data.IdInstitucion);
+
+            
 
         });
     });
@@ -220,14 +227,12 @@ function Guardar() {
     }
 }
 
-
 function Eliminar(IdEmpleado) {
     $("#IdOculto").val("Eliminar");
     RegistroEliminar = IdEmpleado;
 }
 
 function ObtenerDatos() {
-    console.log("Se obtuvieron los datos");
     ObtenerEspecialidades();
     ObtenerPuestos();
     ObtenerServicios();
@@ -248,7 +253,6 @@ function ObtenerEspecialidades() {
         }),
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
         console.log(sessionStorage.getItem('token'));
 
         $.each(response, function (index, data) {
@@ -272,7 +276,7 @@ function ObtenerPuestos() {
         }),
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        
         console.log(sessionStorage.getItem('token'));
 
         $.each(response, function (index, data) {
@@ -296,7 +300,7 @@ function ObtenerServicios() {
         }),
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
+
         console.log(sessionStorage.getItem('token'));
 
         $.each(response, function (index, data) {
@@ -320,7 +324,6 @@ function ObtenerRenglones() {
         }),
     };
     $.ajax(settings).done(function (response) {
-        console.log(response);
         console.log(sessionStorage.getItem('token'));
 
         $.each(response, function (index, data) {

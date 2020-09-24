@@ -44,14 +44,14 @@
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarRenglonModal"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarRenglonModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
 
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered" id="DatosRenglones" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosRenglones" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>Id</th>

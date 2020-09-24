@@ -1,6 +1,6 @@
-var UrlApi = "http://localhost:53207/api/";
+var UrlApi = "http://localhost:64315/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
-var ServicioEliminar = "";
+var RegistroEliminar = "";
 
 function AgregarServicio() {
     var settings = {
@@ -20,11 +20,11 @@ function AgregarServicio() {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Servicio se agregó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El servicio se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerServicios();
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el Servicio');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el servicio');
             }
         });
 
@@ -37,10 +37,10 @@ function LimpiarFormulario() {
 }
 
 function ObtenerServicios() {
-    $("#DatosServicios td").remove();
+    $(".DatosServicios td").remove();
     var settings = {
         "url": UrlApi + "ObtenerServicios",
-        "method": "GET",
+        "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json"
@@ -61,7 +61,7 @@ function ObtenerServicios() {
                 "<td class='text-center'><a href='#' id='EditarServicio' onclick='ObtenerDatosServicio(" + data.IdServicio + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdServicio + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
 
-            $(fila).appendTo("#DatosServicios");
+            $(fila).appendTo(".DatosServicios");
         });
     });
 }
@@ -83,11 +83,11 @@ function EliminarServicio(IdServicio) {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Servicio se eliminó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El servicio se eliminó correctamente.');
                 LimpiarFormulario();
                 ObtenerServicios();
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el Servicio.');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el servicio.');
 
             }
         });
@@ -133,19 +133,18 @@ function ActualizarServicio() {
             "IdServicio": $("#IdOculto").val(),
             "TxtServicio": $("#TxtServicio").val(),
             "TxtToken": sessionStorage.getItem('token')
-
         }),
     };
 
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Servicio se modificó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El servicio se modificó correctamente.');
 
                 LimpiarFormulario();
                 ObtenerServicios();
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el Servicio.');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el servicio.');
 
             }
         });
@@ -155,7 +154,8 @@ function ActualizarServicio() {
 
 function Guardar() {
     if ($("#IdOculto").val() == "Eliminar") {
-        EliminarServicio(IdServicio);
+        EliminarServicio(RegistroEliminar);
+        $("#IdOculto").val("");
     } else if ($("#IdOculto").val() > 0) {
         ActualizarServicio();
     } else {
