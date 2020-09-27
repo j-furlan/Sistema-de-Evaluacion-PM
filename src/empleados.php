@@ -103,7 +103,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleAddUserModal">Registro de Empleados</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormulario();">
             <span aria-hidden="true">×</span>
           </button>
         </div>

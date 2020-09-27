@@ -43,6 +43,7 @@ function AgregarEmpleado() {
 }
 
 function LimpiarFormulario() {
+    $("#IdOculto").val("");
     $("#TxtNit").val("");
     $("#TxtDpi").val("");
     $("#TxtNombres").val("");
@@ -159,13 +160,11 @@ function ObtenerDatosEmpleado(IdEmpleado) {
             $("#SelectServicio option[value='" + data.IdServicio + "']").attr("selected", true);
             $("#SelectRenglon option[value='" + data.IdRenglon + "']").attr("selected", true);
             $("#SelectInstitucion option[value='" + data.IdInstitucion + "']").attr("selected", true);
-            console.log("Puesto" + data.IdPuesto);
-            console.log("Especialidad" + data.IdEspecialidad);
-            console.log("Servicio" + data.IdServicio);
-            console.log("Renglon" + data.IdRenglon);
-            console.log("Institucion" + data.IdInstitucion);
-
-            
+            console.log("Puesto " + data.IdPuesto);
+            console.log("Especialidad " + data.IdEspecialidad);
+            console.log("Servicio " + data.IdServicio);
+            console.log("Renglon " + data.IdRenglon);
+            console.log("Institucion " + data.IdInstitucion);          
 
         });
     });
