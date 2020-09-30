@@ -31,6 +31,7 @@ function AgregarEspecialidad() {
 }
 
 function LimpiarFormulario() {
+    $("#IdOculto").val("");
     $("#TxtEspecialidad").val("");
 }
 

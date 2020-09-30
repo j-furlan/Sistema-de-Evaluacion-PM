@@ -39,6 +39,7 @@ function AgregarUsuario() {
 }
 
 function LimpiarFormulario() {
+  $("#IdOculto").val("");
   $("#TxtNombres").val("");
   $("#TxtApellidos").val("");
   $("#TxtDireccion").val("");

@@ -31,6 +31,7 @@ function AgregarRenglon() {
 }
 
 function LimpiarFormulario() {
+    $("#IdOculto").val("");
     $("#TxtRenglon").val("");
 }
 

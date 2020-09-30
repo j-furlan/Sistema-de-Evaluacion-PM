@@ -33,6 +33,7 @@ function AgregarServicio() {
 }
 
 function LimpiarFormulario() {
+    $("#IdOculto").val("");
     $("#TxtServicio").val("");
 }
 

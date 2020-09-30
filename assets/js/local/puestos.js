@@ -33,6 +33,7 @@ function AgregarPuesto() {
 }
 
 function LimpiarFormulario() {
+    $("#IdOculto").val("");
     $("#TxtPuesto").val("");
 }
 
