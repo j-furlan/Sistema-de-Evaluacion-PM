@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/";
+var UrlApi = "http://localhost:53207/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -23,6 +23,8 @@ function AgregarServicio() {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El servicio se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerServicios();
+                $('#AgregarServicioModal').modal('show');
+
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el servicio');
             }
@@ -141,9 +143,10 @@ function ActualizarServicio() {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El servicio se modificó correctamente.');
-
                 LimpiarFormulario();
                 ObtenerServicios();
+                $('#AgregarServicioModal').modal('show');
+
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el servicio.');
 

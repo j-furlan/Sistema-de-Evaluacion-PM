@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/" // cambiar puerto de nuestra API
+var UrlApi = "http://localhost:53207/API/" // cambiar puerto de nuestra API
 
 function MenuUsuario() {
     var settings = {

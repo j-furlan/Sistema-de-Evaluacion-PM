@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/";
+var UrlApi = "http://localhost:53207/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -23,6 +23,8 @@ function AgregarEspecialidad() {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'La especialidad se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerEspecialidades();
+                $('#AgregarEspecialidadModal').modal('hide');
+
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar la especialidad');
             }
@@ -144,6 +146,7 @@ function ActualizarEspecialidad() {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'La especialidad se modificó correctamente.');
                 LimpiarFormulario();
                 ObtenerEspecialidades();
+                $('#AgregarEspecialidadModal').modal('hide');
 
             } else {
 

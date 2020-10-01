@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/";
+var UrlApi = "http://localhost:53207/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -23,6 +23,8 @@ function AgregarRenglon() {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerRenglones();
+                $('#AgregarRenglonModal').modal('hide');
+
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el Renglon');
             }
@@ -141,6 +143,8 @@ function ActualizarRenglon() {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se modificó correctamente.');
                 LimpiarFormulario();
                 ObtenerRenglones();
+                $('#AgregarRenglonModal').modal('hide');
+
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el Renglon');
 

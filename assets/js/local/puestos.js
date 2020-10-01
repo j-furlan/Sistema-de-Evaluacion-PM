@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/";
+var UrlApi = "http://localhost:53207/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -24,6 +24,7 @@ function AgregarPuesto() {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El puesto se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerPuestos();
+                $('#AgregarPuestoModal').modal('hide');
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el Puesto');
             }
@@ -142,7 +143,7 @@ function ActualizarPuesto() {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El puesto se modificó correctamente.');
-
+                $('#AgregarPuestoModal').modal('hide');
                 LimpiarFormulario();
                 ObtenerPuestos();
             } else {
