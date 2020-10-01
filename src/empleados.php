@@ -129,13 +129,13 @@
             <div class="form-group col-md-6">
               <label>Puesto</label>
               <select id="SelectPuesto" class="form-control">
-                <option selected>Elegir...</option>
+                <option >Elegir...</option>
               </select>
             </div>
             <div class="form-group col-md-6">
               <label>Especialidad</label>
               <select id="SelectEspecialidad" class="form-control">
-                <option selected>Elegir...</option>
+                <option >Elegir...</option>
               </select>
             </div>
             </div>
@@ -143,21 +143,20 @@
             <div class="form-group col-md-6">
               <label>Servicio</label>
               <select id="SelectServicio" class="form-control">
-                <option selected>Elegir...</option>
+                <option >Elegir...</option>
               </select>
             </div>
             <div class="form-group col-md-6">
               <label>Renglon</label>
               <select id="SelectRenglon" class="form-control">
-                <option selected>Elegir...</option>
+                <option >Elegir...</option>
               </select>
             </div>
             </div>
             <div class="form-group">
               <label>Institucion</label>
               <select id="SelectInstitucion" class="form-control">
-                <option selected>Elegir...</option>
-                <option value='1'>Ministerio de Salúd Pública</option>
+                <option >Elegir...</option>
               </select>
             </div>
             <div class="text-center">

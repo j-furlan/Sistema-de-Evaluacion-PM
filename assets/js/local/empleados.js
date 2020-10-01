@@ -4,7 +4,114 @@ var RegistroEliminar = "";
 
 
 
+function ObtenerEspecialidades() {
+
+    var settings = {
+        "url": UrlApi + "ObtenerEspecialidades",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function (response) {
+
+        $.each(response, function (index, data) {
+            var opcion = "<option class='opciones' value='" + data.IdEspecialidad + "'>" + data.TxtEspecialidad + "</option>";
+            $(opcion).appendTo("#SelectEspecialidad");
+        });
+        
+    });
+}
+
+function ObtenerPuestos() {
+
+    var settings = {
+        "url": UrlApi + "ObtenerPuestos",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function (response) {
+
+        $.each(response, function (index, data) {
+            var opcion = "<option class='opciones' value='" + data.IdPuesto + "'>" + data.TxtPuesto + "</option>";
+            $(opcion).appendTo("#SelectPuesto");
+        });
+    });
+}
+
+function ObtenerServicios() {
+
+    var settings = {
+        "url": UrlApi + "ObtenerServicios",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function (response) {
+
+        $.each(response, function (index, data) {
+            var opcion = "<option class='opciones' value='" + data.IdServicio + "'>" + data.TxtServicio + "</option>";
+            $(opcion).appendTo("#SelectServicio");
+        });
+    });
+}
+
+function ObtenerRenglones() {
+
+    var settings = {
+        "url": UrlApi + "ObtenerRenglones",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function (response) {
+
+        $.each(response, function (index, data) {
+            var opcion = "<option class='opciones' value='" + data.IdRenglon + "'>" + data.TxtRenglon + "</option>";
+            $(opcion).appendTo("#SelectRenglon");
+        });
+    });
+}
+
+function ObtenerInstituciones(){
+    var opcion = "<option class='opciones' value='1'>Ministerio de Salud Pública</option>";
+    $(opcion).appendTo("#SelectInstitucion");
+}
+
+function ObtenerDatos() {
+
+    $(".opciones").remove();
+
+    ObtenerEspecialidades();
+    ObtenerPuestos();
+    ObtenerServicios();
+    ObtenerRenglones();
+    ObtenerInstituciones();
+
+}
+
 function AgregarEmpleado() {
+
     var settings = {
         "url": UrlApi + "AgregarEmpleado",
         "method": "POST",
@@ -126,11 +233,9 @@ function EliminarEmpleado(IdEmpleado) {
 }
 
 function ObtenerDatosEmpleado(IdEmpleado) {
-    $(".opciones").remove();
-    ObtenerDatos();
+
     LimpiarFormulario();
-
-
+   
     var settings = {
         "url": UrlApi + "ObtenerDatosEmpleado",
         "method": "POST",
@@ -146,20 +251,28 @@ function ObtenerDatosEmpleado(IdEmpleado) {
     };
 
     $.ajax(settings).done(function (response) {
-        //mostra modal para editar especialidad
+        //mostra modal para editar Empleado
         $('#AgregarEmpleadoModal').modal('show');
         $("#IdOculto").val(IdEmpleado);
+        
 
         $.each(response, function (index, data) {
+
             $("#TxtNit").val(data.TxtNit);
             $("#TxtDpi").val(data.TxtDpi);
             $("#TxtNombres").val(data.TxtNombres);
             $("#TxtApellidos").val(data.TxtApellidos);
-            $("#SelectPuesto option[value='" + data.IdPuesto + "']").attr("selected", true);
-            $("#SelectEspecialidad option[value='" + data.IdEspecialidad + "']").attr("selected", true);
-            $("#SelectServicio option[value='" + data.IdServicio + "']").attr("selected", true);
-            $("#SelectRenglon option[value='" + data.IdRenglon + "']").attr("selected", true);
-            $("#SelectInstitucion option[value='" + data.IdInstitucion + "']").attr("selected", true);
+            $("#SelectPuesto option[value=" + data.IdPuesto + "]").prop("selected", true);
+            //$("#SelectPuesto option[value=" + data.IdPuesto + "]").attr("selected", true);
+            $("#SelectEspecialidad option[value=" + data.IdEspecialidad + "]").prop("selected", true);
+            //$("#SelectEspecialidad option[value=" + data.IdEspecialidad + "]").attr("selected", true);
+            $("#SelectServicio option[value=" + data.IdServicio + "]").prop("selected", true);
+            //$("#SelectServicio option[value=" + data.IdServicio + "]").attr("selected", true);
+            $("#SelectRenglon option[value=" + data.IdRenglon + "]").prop("selected", true);
+            //$("#SelectRenglon option[value=" + data.IdRenglon + "]").attr("selected", true);
+            $("#SelectInstitucion option[value=" + data.IdInstitucion + "]").prop("selected", true);
+            //$("#SelectInstitucion option[value=" + data.IdInstitucion + "]").attr("selected", true);
+
             console.log("Puesto " + data.IdPuesto);
             console.log("Especialidad " + data.IdEspecialidad);
             console.log("Servicio " + data.IdServicio);
@@ -231,103 +344,5 @@ function Eliminar(IdEmpleado) {
     RegistroEliminar = IdEmpleado;
 }
 
-function ObtenerDatos() {
-    ObtenerEspecialidades();
-    ObtenerPuestos();
-    ObtenerServicios();
-    ObtenerRenglones();
-}
 
-function ObtenerEspecialidades() {
 
-    var settings = {
-        "url": UrlApi + "ObtenerEspecialidades",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "TxtToken": sessionStorage.getItem('token')
-        }),
-    };
-    $.ajax(settings).done(function (response) {
-        console.log(sessionStorage.getItem('token'));
-
-        $.each(response, function (index, data) {
-            var opcion = "<option class='opciones' value='" + data.IdEspecialidad + "'>" + data.TxtEspecialidad + "</option>";
-            $(opcion).appendTo("#SelectEspecialidad");
-        });
-    });
-}
-
-function ObtenerPuestos() {
-
-    var settings = {
-        "url": UrlApi + "ObtenerPuestos",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "TxtToken": sessionStorage.getItem('token')
-        }),
-    };
-    $.ajax(settings).done(function (response) {
-        
-        console.log(sessionStorage.getItem('token'));
-
-        $.each(response, function (index, data) {
-            var opcion = "<option class='opciones' value='" + data.IdPuesto + "'>" + data.TxtPuesto + "</option>";
-            $(opcion).appendTo("#SelectPuesto");
-        });
-    });
-}
-
-function ObtenerServicios() {
-
-    var settings = {
-        "url": UrlApi + "ObtenerServicios",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "TxtToken": sessionStorage.getItem('token')
-        }),
-    };
-    $.ajax(settings).done(function (response) {
-
-        console.log(sessionStorage.getItem('token'));
-
-        $.each(response, function (index, data) {
-            var opcion = "<option class='opciones' value='" + data.IdServicio + "'>" + data.TxtServicio + "</option>";
-            $(opcion).appendTo("#SelectServicio");
-        });
-    });
-}
-
-function ObtenerRenglones() {
-
-    var settings = {
-        "url": UrlApi + "ObtenerRenglones",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "TxtToken": sessionStorage.getItem('token')
-        }),
-    };
-    $.ajax(settings).done(function (response) {
-        console.log(sessionStorage.getItem('token'));
-
-        $.each(response, function (index, data) {
-            var opcion = "<option class='opciones' value='" + data.IdRenglon + "'>" + data.TxtRenglon + "</option>";
-            $(opcion).appendTo("#SelectRenglon");
-        });
-    });
-}
