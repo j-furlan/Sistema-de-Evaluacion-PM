@@ -18,7 +18,11 @@ function MenuUsuario() {
     $.ajax(settings).done(function(response) {
 //console.log(response);
 if(response.length == 0){
-alert("Meno no disponible");
+    setTimeout(function() {
+        myNotification.showNotification('fas fa-heart-broken', 'danger', 'Ooopps!', 'La Sesion ha conlcuido.');
+    }, 2000);
+    window.location.href = "../index.html";
+
 }
 else{
     //alert("este es el menu");

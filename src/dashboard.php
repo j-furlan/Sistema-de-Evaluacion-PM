@@ -50,17 +50,34 @@
           <!-- Content Row -->
           <div class="row">
 
-            <!-- Earnings (Monthly) Card Example -->
+            <!-- Numero de Especialidades -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="MonthlyEarning"></div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Especialidades</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalEspecialidades"></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-user-graduate fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-secondary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Puestos</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalPuestos"></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-user-md fa-2x text-info"></i>
                     </div>
                   </div>
                 </div>
@@ -73,37 +90,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Renglones</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="TotalRenglones"></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      <i class="fas fa-file-contract fa-2x text-warning"></i>
                     </div>
                   </div>
                 </div>
@@ -112,7 +103,77 @@
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Servicios</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalServicios"></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-hands-helping fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Empleados</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalEmpleados"></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-hospital-user fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Evaluaciones</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalEvaluaciones"></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-user-check  fa-2x text-danger"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-light shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Usuarios</div>                      
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="TotalUsuarios"></div>
+                        </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-dark shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
@@ -365,7 +426,39 @@
 <script src="../assets/js/demo/chart-area-demo.js"></script>
 <script src="../assets/js/demo/chart-pie-demo.js"></script>
 <script>
-  document.getElementById('MonthlyEarning').innerHTML += '$4000!';
+  // obtener numero de Especialidades
+  var NumEspecialidades = sessionStorage.getItem('Especialidades');
+  document.getElementById('TotalEspecialidades').innerHTML += NumEspecialidades;
+
+  // obtener numero de Puestos
+  var NumPuestos = sessionStorage.getItem('Puestos');
+  document.getElementById('TotalPuestos').innerHTML += NumPuestos;
+  
+  // obtener numero de Renglones
+  var NumRenglones = sessionStorage.getItem('Renglones');
+    document.getElementById('TotalRenglones').innerHTML += NumRenglones;
+
+  // obtener numero de Servicios
+  var NumServicios = sessionStorage.getItem('Servicios');
+  document.getElementById('TotalServicios').innerHTML += NumRenglones;
+
+  // obtener numero de Empleados
+  var NumEmpleados = sessionStorage.getItem('Empleados');
+  document.getElementById('TotalEmpleados').innerHTML += NumEmpleados;
+
+  // obtener numero de Evaluaciones
+  //var NumEvaluaciones = sessionStorage.getItem('Evaluaciones');
+  //document.getElementById('Evaluaciones').innerHTML += NumEvaluaciones;
+  document.getElementById('TotalEvaluaciones').innerHTML += " En Proceso";
+
+  // obtener numero de Usuarios
+  var NumUsuarios = sessionStorage.getItem('Usuarios');
+  document.getElementById('TotalUsuarios').innerHTML += NumUsuarios;
+
+  
+
+
+ 
 </script>
 
 </body>

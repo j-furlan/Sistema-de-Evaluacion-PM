@@ -30,10 +30,10 @@ function InicioDeSesion() {
         };
 
         $.ajax(settings).done(function(response) {
-
             $.each(response, function(index, data) {
                 if (data.IntResultado > 0) {
                     sessionStorage.setItem('token', data.TxtToken);
+                    sessionStorage.setItem('Nombre', data.TxtUsuario);
                     var token = sessionStorage.getItem('token');
                     setTimeout(function() {
                         myNotification.showNotification('fas fa-smile', 'info', 'Bienvenido !', 'Token: ' + token);

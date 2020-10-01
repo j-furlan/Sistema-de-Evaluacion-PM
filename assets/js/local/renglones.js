@@ -19,6 +19,7 @@ function AgregarRenglon() {
 
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
+            
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se agregó correctamente.');
                 LimpiarFormulario();
@@ -52,11 +53,13 @@ function ObtenerRenglones() {
     };
 
     $.ajax(settings).done(function(response) {
-
+        
+        console.log(response.length);
         LimpiarFormulario();
-
+        
         $.each(response, function(index, data) {
-            var fila = "<tr> <td>" + index +
+            sessionStorage.setItem('Renglones', response.length);
+                var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtRenglon +
                 "</td><td>" + data.FechaIngreso +
                 "<td class='text-center'><a href='#' id='EditarRenglones' onclick='ObtenerDatosRenglon(" + data.IdRenglon + ");'><i class='fas fa-user-edit text-warning'></i></a>" +

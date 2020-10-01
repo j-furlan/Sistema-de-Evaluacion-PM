@@ -184,6 +184,8 @@ function ObtenerEmpleados() {
         LimpiarFormulario();
 
         $.each(response, function (index, data) {
+            sessionStorage.setItem('Empleados', response.length);
+            console.log(response.length);
             var fila = "<tr><td>" + data.TxtNit +
                 "</td><td>" + data.TxtDpi +
                 "</td><td>" + data.TxtNombres +

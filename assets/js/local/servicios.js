@@ -58,6 +58,7 @@ function ObtenerServicios() {
         LimpiarFormulario();
 
         $.each(response, function(index, data) {
+            sessionStorage.setItem('Servicios', response.length);
             var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtServicio +
                 "</td><td>" + data.FechaIngreso +

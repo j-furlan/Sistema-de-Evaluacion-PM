@@ -62,12 +62,13 @@ function ObtenerUsuarios() {
     }),
   };
   $.ajax(settings).done(function (response) {
-    console.log(response);
-    console.log(sessionStorage.getItem('token'));
+    
     LimpiarFormulario();
 
     $.each(response, function (index, data)
     {
+      sessionStorage.setItem('Usuarios', response.length);
+      
       var fila = "<tr> <td>" + data.TxtNombres +
         "</td><td>" + data.TxtDireccion +
         "</td><td>" + data.TxtEmail +

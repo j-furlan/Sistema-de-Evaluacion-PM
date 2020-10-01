@@ -56,6 +56,8 @@ function ObtenerEspecialidades() {
         LimpiarFormulario();
 
         $.each(response, function(index, data) {
+            sessionStorage.setItem('Especialidades', response.length);
+            console.log(response.length);
             var fila = "<tr> <td>" + data.IdEspecialidad +
                 "</td><td>" + data.TxtEspecialidad + "</td>" +
                 "<td class='text-center'><a href='#' id='EditarEspecialidad' onclick='ObtenerDatosEspecialidad(" + data.IdEspecialidad + ");'><i class='fas fa-user-edit text-warning'></i></a>" +

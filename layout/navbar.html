@@ -150,7 +150,7 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="NomUsuario"></span>
                 <img class="img-profile rounded-circle" src="../assets/img/admin.png">
             </a>
             <!-- Dropdown - User Information -->
@@ -193,3 +193,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    // obtener nombre de Usuario
+  var NomUsuario = sessionStorage.getItem('Nombre');
+  document.getElementById('NomUsuario').innerHTML += NomUsuario;
+</script>

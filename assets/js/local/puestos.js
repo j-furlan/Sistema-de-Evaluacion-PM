@@ -57,6 +57,8 @@ function ObtenerPuestos() {
         LimpiarFormulario();
 
         $.each(response, function(index, data) {
+            sessionStorage.setItem('Puestos', response.length);
+            console.log(sessionStorage.getItem('Puestos'));
             var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtPuesto +
                 "</td><td>" + data.FechaIngreso +
