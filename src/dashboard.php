@@ -1,9 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<?php include('../layout/head.html'); ?>
+<?php 
+
+ include('../layout/head.html'); 
+
+ ?>
 
   <title>Home</title>
 
@@ -13,13 +18,24 @@
 <body id="page-top">
 
 
+<script> 
+  var SessionToken = sessionStorage.getItem('token');
+  console.log(SessionToken);
+</script>
+<?php 
+//echo "<div class='alert alert-danger'><script>document.write(SessionToken);</script></div>";
+
+echo "<div class='alert alert-info'>It's: ". $lastactive ."  ".time() .", Your Session Expires @ ". $idletime . ". You Session Token Is: <script>document.write(SessionToken);</script>" ."</div>";
+
+
+?>
+<!--
 <script type="text/javascript">
   window.onload= function(){
     myNotification.showNotification('fas fa-smile', 'info', '¡Bienvenido Administrador!', 'No olvides revisar tus notificaciones.');
-  }
-                
+  }                
 </script>
-
+-->
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -33,6 +49,7 @@
       <!-- Main Content -->
       <div id="content">
 
+    
         <!-- Topbar -->
         <?php include('../layout/navbar.html'); ?>
         <!-- End of Topbar -->
@@ -43,6 +60,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            
             <button class="btn btn-primary" onclick="myNotification.showNotification('fas fa-smile', 'info', 'Bienvenido !', 'Que Gusto Tenerta Nuevamente')">notify</button>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
@@ -59,6 +77,7 @@
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Especialidades</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800" id="TotalEspecialidades"></div>
                     </div>
+                   
                     <div class="col-auto">
                       <i class="fas fa-user-graduate fa-2x text-primary"></i>
                     </div>
@@ -118,6 +137,7 @@
               </div>
             </div>
           </div>
+          <div id="thisToken" class="alert alert-primary"></div>
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -273,6 +293,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
                 </div>
                 <div class="card-body">
+               
                   <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
@@ -393,6 +414,7 @@
                 </div>
               </div>
 
+
             </div>
           </div>
 
@@ -405,10 +427,11 @@
       
     </div>
     <!-- End of Content Wrapper -->
-    
+
   </div>
   <!-- End of Page Wrapper -->
   
+
   <!-- Footer -->
   <?php include('../layout/footer.html'); ?>
   <!-- End of Footer -->
@@ -421,7 +444,10 @@
 
 
 
-<?php include('../layout/scripts.html'); ?>
+<?php 
+  include('../layout/scripts.html');
+  //include('./test.php'); 
+  ?>
 <!-- Page level custom scripts -->
 <script src="../assets/js/demo/chart-area-demo.js"></script>
 <script src="../assets/js/demo/chart-pie-demo.js"></script>
@@ -455,12 +481,86 @@
   var NumUsuarios = sessionStorage.getItem('Usuarios');
   document.getElementById('TotalUsuarios').innerHTML += NumUsuarios;
 
-  
-
-
- 
 </script>
 
+<script>
+
+$(document).ready(function(){
+var TokenAction = 'GetSessionToken';
+var SessionToken =  sessionStorage.getItem('token');
+console.log(SessionToken);
+
+$.ajax({       
+        url: "dashboard.php", 
+        type: "POST",
+        data: {
+          TokenAction: TokenAction,
+          SessionToken: SessionToken          
+        },
+        success: function (response) {
+         // $('#thisToken').html(response);
+        //alert("funciono");
+           // You will get response from your PHP page (what you echo or print)
+        }
+    });
+  });
+
+</script>
+
+<script>
+  
+$(function()
+{
+
+    function timeTracker()
+    {
+        setInterval(function()
+        {
+          //se captra el valor de la ultima actividad guardada de en sessionStorage
+            var ultimoTimeStamp = sessionStorage.getItem("ultimaActividadTimeStamp");  
+          //se llama la funcion comprar tiempo y se le pasa el valor del sessionStorage
+          compararTiempo(ultimoTimeStamp);
+        },5000);
+    }
+
+
+    function compararTiempo(stringTiempo)
+    {
+        var maxSegundos             = 60;  //numero maximo de segundos de inactividad
+        var horaActual              = new Date(); //hora actual
+        var tiempoDeInactividad     = new Date(stringTiempo); // valor de ultima hora que se movio el cursor
+        var tiempoDiff              = horaActual - tiempoDeInactividad; //diferencia hora actual y hora ultima actividad
+        var segundosDeInactividad    = Math.floor((tiempoDiff/1000)); 
+
+        if( segundosDeInactividad > maxSegundos)
+        {
+            sessionStorage.removeItem("ultimaActividadTimeStamp");
+            myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Se Vencio la Session');
+            setTimeout(function(){
+              window.location = "../index.html";
+              
+            }, 3000);
+            return false;
+        }else
+        {
+           console.log("hora Actual - " + horaActual + "\ntiempo De Inactividad " + tiempoDeInactividad + "\nsegundos De Inactividad " + segundosDeInactividad);
+        }
+    }
+
+    if(typeof(Storage) !== "undefined") 
+    {
+        $(document).mousemove(function()
+        {
+          //variable para capturar hora que se mueve el cursor
+            var horaTimeStamp = new Date();
+            //el valor de hora se argrega al sessionStorage
+            sessionStorage.setItem("ultimaActividadTimeStamp", horaTimeStamp);
+        });
+
+        timeTracker();
+    }  
+});//END JQUERY
+</script>
 </body>
 
 </html>
