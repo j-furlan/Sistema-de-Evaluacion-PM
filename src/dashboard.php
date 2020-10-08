@@ -22,13 +22,7 @@
   var SessionToken = sessionStorage.getItem('token');
   console.log(SessionToken);
 </script>
-<?php 
-//echo "<div class='alert alert-danger'><script>document.write(SessionToken);</script></div>";
 
-echo "<div class='alert alert-info'>It's: ". $lastactive ."  ".time() .", Your Session Expires @ ". $idletime . ". You Session Token Is: <script>document.write(SessionToken);</script>" ."</div>";
-
-
-?>
 <!--
 <script type="text/javascript">
   window.onload= function(){
@@ -137,7 +131,6 @@ echo "<div class='alert alert-info'>It's: ". $lastactive ."  ".time() .", Your S
               </div>
             </div>
           </div>
-          <div id="thisToken" class="alert alert-primary"></div>
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -483,83 +476,90 @@ echo "<div class='alert alert-info'>It's: ". $lastactive ."  ".time() .", Your S
 
 </script>
 
+
 <script>
+    
+  $(function()
+  {
 
-$(document).ready(function(){
-var TokenAction = 'GetSessionToken';
-var SessionToken =  sessionStorage.getItem('token');
-console.log(SessionToken);
+      function timeTracker()
+      {
+          setInterval(function()
+          {
+            //se captra el valor de la ultima actividad guardada de en sessionStorage
+              var ultimoTimeStamp = sessionStorage.getItem("ultimaActividadTimeStamp");  
+            //se llama la funcion comprar tiempo y se le pasa el valor del sessionStorage
+            compararTiempo(ultimoTimeStamp);
+          },5000);
+      }
 
-$.ajax({       
-        url: "dashboard.php", 
-        type: "POST",
-        data: {
-          TokenAction: TokenAction,
-          SessionToken: SessionToken          
-        },
-        success: function (response) {
-         // $('#thisToken').html(response);
-        //alert("funciono");
-           // You will get response from your PHP page (what you echo or print)
-        }
-    });
-  });
 
+      function compararTiempo(stringTiempo)
+      {
+          var maxSegundos             = 60;  //numero maximo de segundos de inactividad
+          var horaActual              = new Date(); //hora actual
+          var tiempoDeInactividad     = new Date(stringTiempo); // valor de ultima hora que se movio el cursor
+          var tiempoDiff              = horaActual - tiempoDeInactividad; //diferencia hora actual y hora ultima actividad
+          var segundosDeInactividad    = Math.floor((tiempoDiff/1000)); 
+
+          if( segundosDeInactividad > maxSegundos)
+          {
+            /*  sessionStorage.removeItem("ultimaActividadTimeStamp");
+              myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Se Vencio la Session');
+              setTimeout(function(){
+                window.location = "../index.html";
+                
+              }, 3000);
+              return false; */
+          }else
+          {
+            console.log("hora Actual - " + horaActual + "\ntiempo De Inactividad " + tiempoDeInactividad + "\nsegundos De Inactividad " + segundosDeInactividad);
+          }
+      }
+
+      if(typeof(Storage) !== "undefined") 
+      {
+          $(document).mousemove(function()
+          {
+            //variable para capturar hora que se mueve el cursor
+              var horaTimeStamp = new Date();
+              //el valor de hora se argrega al sessionStorage
+              sessionStorage.setItem("ultimaActividadTimeStamp", horaTimeStamp);
+          });
+
+          timeTracker();
+      }  
+  });//END JQUERY
 </script>
-
 <script>
-  
-$(function()
-{
+  let MenuDeUsuario = JSON.parse(sessionStorage.getItem('ResultadoMenuDeUsuario'));
+  console.log(MenuDeUsuario);
+  if(MenuDeUsuario !== ""){
+    $.each(MenuDeUsuario, function(index, data) {
+    var IdMenuPadre = data.IdMenuPadre;
 
-    function timeTracker()
-    {
-        setInterval(function()
-        {
-          //se captra el valor de la ultima actividad guardada de en sessionStorage
-            var ultimoTimeStamp = sessionStorage.getItem("ultimaActividadTimeStamp");  
-          //se llama la funcion comprar tiempo y se le pasa el valor del sessionStorage
-          compararTiempo(ultimoTimeStamp);
-        },5000);
+    if (IdMenuPadre == 0) {
+        var collapseId = "collapse"+ data.IdMenu;
+        var collapseIdTarget = "#collapse" + data.IdMenu;
+        var opcion =
+            "<li class='nav-item'>" +
+            "<a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='" + collapseIdTarget + "' >" +
+            "<i class='fas fa-fw fa-cog'></i>" +
+            "<span>" + data.TxtNombre + "</span>" +
+            "</a>" +
+            "<div class='collapse' id='" + collapseId + "' data-parent='#accordionSidebar'>" +
+            "<div class='bg-white py-2 collapse-inner rounded' id='"+data.IdMenu+"'>"+
+            "</div></div></li>";                    
+    } else {
+        var item = "<a class='collapse-item' href='" + data.TxtLink + ".php'>" + data.TxtNombre + "</a>";
     }
+//console.log(item);
+    $(opcion).appendTo(".MenuUsuario");            
+    $(item).appendTo("#" + IdMenuPadre);
 
+});
+  }
 
-    function compararTiempo(stringTiempo)
-    {
-        var maxSegundos             = 60;  //numero maximo de segundos de inactividad
-        var horaActual              = new Date(); //hora actual
-        var tiempoDeInactividad     = new Date(stringTiempo); // valor de ultima hora que se movio el cursor
-        var tiempoDiff              = horaActual - tiempoDeInactividad; //diferencia hora actual y hora ultima actividad
-        var segundosDeInactividad    = Math.floor((tiempoDiff/1000)); 
-
-        if( segundosDeInactividad > maxSegundos)
-        {
-            sessionStorage.removeItem("ultimaActividadTimeStamp");
-            myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Se Vencio la Session');
-            setTimeout(function(){
-              window.location = "../index.html";
-              
-            }, 3000);
-            return false;
-        }else
-        {
-           console.log("hora Actual - " + horaActual + "\ntiempo De Inactividad " + tiempoDeInactividad + "\nsegundos De Inactividad " + segundosDeInactividad);
-        }
-    }
-
-    if(typeof(Storage) !== "undefined") 
-    {
-        $(document).mousemove(function()
-        {
-          //variable para capturar hora que se mueve el cursor
-            var horaTimeStamp = new Date();
-            //el valor de hora se argrega al sessionStorage
-            sessionStorage.setItem("ultimaActividadTimeStamp", horaTimeStamp);
-        });
-
-        timeTracker();
-    }  
-});//END JQUERY
 </script>
 </body>
 
