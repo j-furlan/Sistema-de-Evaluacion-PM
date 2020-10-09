@@ -530,8 +530,9 @@
           timeTracker();
       }  
   });//END JQUERY
+  
 </script>
-<script>
+<!-- <script>
   let MenuDeUsuario = JSON.parse(sessionStorage.getItem('ResultadoMenuDeUsuario'));
   console.log(MenuDeUsuario);
   if(MenuDeUsuario !== ""){
@@ -553,14 +554,14 @@
     } else {
         var item = "<a class='collapse-item' href='" + data.TxtLink + ".php'>" + data.TxtNombre + "</a>";
     }
-//console.log(item);
+  console.log(item);
     $(opcion).appendTo(".MenuUsuario");            
     $(item).appendTo("#" + IdMenuPadre);
 
 });
   }
 
-</script>
+</script> -->
 </body>
 
 </html>
