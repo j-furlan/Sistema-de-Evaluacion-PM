@@ -18,18 +18,15 @@
 <body id="page-top">
 
 
-<script> 
-  var SessionToken = sessionStorage.getItem('token');
-  console.log(SessionToken);
-</script>
 
-<!--
+
+
 <script type="text/javascript">
   window.onload= function(){
     myNotification.showNotification('fas fa-smile', 'info', '¡Bienvenido Administrador!', 'No olvides revisar tus notificaciones.');
   }                
 </script>
--->
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -496,7 +493,7 @@
 
       function compararTiempo(stringTiempo)
       {
-          var maxSegundos             = 60;  //numero maximo de segundos de inactividad
+          var maxSegundos             = 20;  //numero maximo de segundos de inactividad
           var horaActual              = new Date(); //hora actual
           var tiempoDeInactividad     = new Date(stringTiempo); // valor de ultima hora que se movio el cursor
           var tiempoDiff              = horaActual - tiempoDeInactividad; //diferencia hora actual y hora ultima actividad
@@ -504,13 +501,13 @@
 
           if( segundosDeInactividad > maxSegundos)
           {
-            /*  sessionStorage.removeItem("ultimaActividadTimeStamp");
+             sessionStorage.removeItem("ultimaActividadTimeStamp");
               myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Se Vencio la Session');
               setTimeout(function(){
-                window.location = "../index.html";
-                
+                VerificarVigenciaToken();
               }, 3000);
-              return false; */
+              return false;
+
           }else
           {
             console.log("hora Actual - " + horaActual + "\ntiempo De Inactividad " + tiempoDeInactividad + "\nsegundos De Inactividad " + segundosDeInactividad);

@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/" // cambiar puerto de nuestra API
+var UrlApi = "http://localhost:53207/API/";// cambiar puerto de nuestra API 
 
 //OBTIENE LOS DATOS PARA EL MENU DESDE LA VARIABLE DE SESION.
 
@@ -6,6 +6,7 @@ function MenuUsuarioLocal() {
 
     let MenuDeUsuario = JSON.parse(sessionStorage.getItem('ResultadoMenuDeUsuario'));
     console.log(MenuDeUsuario);
+    console.log(sessionStorage.getItem('token'));
     if (MenuDeUsuario !== "") {
         $.each(MenuDeUsuario, function (index, data) {
             var IdMenuPadre = data.IdMenuPadre;
