@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:53207/API/";
+var UrlApi = "http://localhost:64315/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -17,13 +17,13 @@ function ObtenerEspecialidades() {
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function(response) {
 
-        $.each(response, function (index, data) {
+        $.each(response, function(index, data) {
             var opcion = "<option class='opciones' value='" + data.IdEspecialidad + "'>" + data.TxtEspecialidad + "</option>";
             $(opcion).appendTo("#SelectEspecialidad");
         });
-        
+
     });
 }
 
@@ -40,9 +40,9 @@ function ObtenerPuestos() {
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function(response) {
 
-        $.each(response, function (index, data) {
+        $.each(response, function(index, data) {
             var opcion = "<option class='opciones' value='" + data.IdPuesto + "'>" + data.TxtPuesto + "</option>";
             $(opcion).appendTo("#SelectPuesto");
         });
@@ -62,9 +62,9 @@ function ObtenerServicios() {
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function(response) {
 
-        $.each(response, function (index, data) {
+        $.each(response, function(index, data) {
             var opcion = "<option class='opciones' value='" + data.IdServicio + "'>" + data.TxtServicio + "</option>";
             $(opcion).appendTo("#SelectServicio");
         });
@@ -84,16 +84,16 @@ function ObtenerRenglones() {
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function(response) {
 
-        $.each(response, function (index, data) {
+        $.each(response, function(index, data) {
             var opcion = "<option class='opciones' value='" + data.IdRenglon + "'>" + data.TxtRenglon + "</option>";
             $(opcion).appendTo("#SelectRenglon");
         });
     });
 }
 
-function ObtenerInstituciones(){
+function ObtenerInstituciones() {
     var opcion = "<option class='opciones' value='1'>Ministerio de Salud Pública</option>";
     $(opcion).appendTo("#SelectInstitucion");
 }
@@ -119,32 +119,30 @@ function AgregarEmpleado() {
         "headers": {
             "Content-Type": "application/json"
         },
-        "data": JSON.stringify
-            ({
-                "TxtNit": $("#TxtNit").val(),
-                "TxtDpi": $("#TxtDpi").val(),
-                "TxtNombres": $("#TxtNombres").val(),
-                "TxtApellidos": $("#TxtApellidos").val(),
-                "IdPuesto": $("#SelectPuesto option:selected").val(),
-                "IdEspecialidad": $("#SelectEspecialidad option:selected").val(),
-                "IdServicio":$("#SelectServicio option:selected").val(),
-                "IdRenglon": $("#SelectRenglon option:selected").val(),
-                "IdInstitucion": $("#SelectInstitucion option:selected").val(),
-                "TxtToken": sessionStorage.getItem('token'),
-            }),
+        "data": JSON.stringify({
+            "TxtNit": $("#TxtNit").val(),
+            "TxtDpi": $("#TxtDpi").val(),
+            "TxtNombres": $("#TxtNombres").val(),
+            "TxtApellidos": $("#TxtApellidos").val(),
+            "IdPuesto": $("#SelectPuesto option:selected").val(),
+            "IdEspecialidad": $("#SelectEspecialidad option:selected").val(),
+            "IdServicio": $("#SelectServicio option:selected").val(),
+            "IdRenglon": $("#SelectRenglon option:selected").val(),
+            "IdInstitucion": $("#SelectInstitucion option:selected").val(),
+            "TxtToken": sessionStorage.getItem('token'),
+        }),
     };
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function(response) {
 
-        $.each(response, function (index, data) {
+        $.each(response, function(index, data) {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Empleado se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerEmpleados();
                 $('#AgregarEmpleadoModal').modal('hide');
 
-            }
-            else {
+            } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se puede agregar el Empleado');
             }
         });
@@ -178,12 +176,12 @@ function ObtenerEmpleados() {
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
-    $.ajax(settings).done(function (response) {
-    
+    $.ajax(settings).done(function(response) {
+
         console.log(sessionStorage.getItem('token'));
         LimpiarFormulario();
 
-        $.each(response, function (index, data) {
+        $.each(response, function(index, data) {
             sessionStorage.setItem('Empleados', response.length);
             console.log(response.length);
             var fila = "<tr><td>" + data.TxtNit +
@@ -197,8 +195,6 @@ function ObtenerEmpleados() {
                 "</td><td>" + data.TxtInstitucion +
                 "</td><td class='text-center'><a href='#' id='EditarEmpleado' onclick='ObtenerDatosEmpleado(" + data.IdEmpleado + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEmpleado + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
-            /*         "</td><td class='text-center'><a href='#' onclick='EliminarUsuario(" + data.IdUsuario + ");'><i class='fas fa-user-times text-danger'></i></a> </tr>";
-             */
             $(fila).appendTo(".DatosEmpleados");
         });
     });
@@ -212,22 +208,20 @@ function EliminarEmpleado(IdEmpleado) {
         "headers": {
             "Content-Type": "application/json"
         },
-        "data": JSON.stringify
-            ({
-                "IdEmpleado": IdEmpleado,
-                "TxtToken": sessionStorage.getItem('token')
-            }),
+        "data": JSON.stringify({
+            "IdEmpleado": IdEmpleado,
+            "TxtToken": sessionStorage.getItem('token')
+        }),
     };
-    $.ajax(settings).done(function (response) {
-        $.each(response, function (index, data) {
+    $.ajax(settings).done(function(response) {
+        $.each(response, function(index, data) {
             if (data.Resultado > 0) {
 
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El empleado se eliminó correctamente.');
                 LimpiarFormulario();
                 ObtenerEmpleados();
 
-            }
-            else {
+            } else {
 
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el empleado.');
 
@@ -239,28 +233,27 @@ function EliminarEmpleado(IdEmpleado) {
 function ObtenerDatosEmpleado(IdEmpleado) {
 
     LimpiarFormulario();
-   
+
     var settings = {
         "url": UrlApi + "ObtenerDatosEmpleado",
         "method": "POST",
         "timeout": 0,
         "headers": {
-        "Content-Type": "application/json"
+            "Content-Type": "application/json"
         },
-        "data": JSON.stringify
-            ({
-                "IdEmpleado": IdEmpleado,
-                "TxtToken": sessionStorage.getItem('token')
-            }),
+        "data": JSON.stringify({
+            "IdEmpleado": IdEmpleado,
+            "TxtToken": sessionStorage.getItem('token')
+        }),
     };
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function(response) {
         //mostra modal para editar Empleado
         $('#AgregarEmpleadoModal').modal('show');
         $("#IdOculto").val(IdEmpleado);
-        
 
-        $.each(response, function (index, data) {
+
+        $.each(response, function(index, data) {
 
             $("#TxtNit").val(data.TxtNit);
             $("#TxtDpi").val(data.TxtDpi);
@@ -281,7 +274,7 @@ function ObtenerDatosEmpleado(IdEmpleado) {
             console.log("Especialidad " + data.IdEspecialidad);
             console.log("Servicio " + data.IdServicio);
             console.log("Renglon " + data.IdRenglon);
-            console.log("Institucion " + data.IdInstitucion);          
+            console.log("Institucion " + data.IdInstitucion);
 
         });
     });
@@ -295,24 +288,23 @@ function ActualizarEmpleado() {
         "headers": {
             "Content-Type": "application/json"
         },
-        "data": JSON.stringify
-            ({
-                "IdEmpleado": $("#IdOculto").val(),
-                "TxtNit": $("#TxtNit").val(),
-                "TxtDpi": $("#TxtDpi").val(),
-                "TxtNombres": $("#TxtNombres").val(),
-                "TxtApellidos": $("#TxtApellidos").val(),
-                "IdPuesto": $("#SelectPuesto option:selected").val(),
-                "IdEspecialidad": $("#SelectEspecialidad option:selected").val(),
-                "IdServicio":$("#SelectServicio option:selected").val(),
-                "IdRenglon": $("#SelectRenglon option:selected").val(),
-                "IdInstitucion": $("#SelectInstitucion option:selected").val(),
-                "TxtToken": sessionStorage.getItem('token'),
-            }),
+        "data": JSON.stringify({
+            "IdEmpleado": $("#IdOculto").val(),
+            "TxtNit": $("#TxtNit").val(),
+            "TxtDpi": $("#TxtDpi").val(),
+            "TxtNombres": $("#TxtNombres").val(),
+            "TxtApellidos": $("#TxtApellidos").val(),
+            "IdPuesto": $("#SelectPuesto option:selected").val(),
+            "IdEspecialidad": $("#SelectEspecialidad option:selected").val(),
+            "IdServicio": $("#SelectServicio option:selected").val(),
+            "IdRenglon": $("#SelectRenglon option:selected").val(),
+            "IdInstitucion": $("#SelectInstitucion option:selected").val(),
+            "TxtToken": sessionStorage.getItem('token'),
+        }),
     };
 
-    $.ajax(settings).done(function (response) {
-        $.each(response, function (index, data) {
+    $.ajax(settings).done(function(response) {
+        $.each(response, function(index, data) {
             if (data.Resultado > 0) {
 
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El empleado se modificó correctamente.');
@@ -320,8 +312,7 @@ function ActualizarEmpleado() {
                 ObtenerEmpleados();
                 $('#AgregarEmpleadoModal').modal('hide');
 
-            }
-            else {
+            } else {
 
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el empleado.');
 
@@ -335,11 +326,9 @@ function Guardar() {
     if ($("#IdOculto").val() == "Eliminar") {
         EliminarEmpleado(RegistroEliminar);
         $("#IdOculto").val("");
-    }
-    else if ($("#IdOculto").val() > 0) {
+    } else if ($("#IdOculto").val() > 0) {
         ActualizarEmpleado();
-    }
-    else {
+    } else {
         AgregarEmpleado();
     }
 }
@@ -348,6 +337,3 @@ function Eliminar(IdEmpleado) {
     $("#IdOculto").val("Eliminar");
     RegistroEliminar = IdEmpleado;
 }
-
-
-
