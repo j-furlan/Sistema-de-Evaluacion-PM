@@ -1,4 +1,5 @@
-var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API 
+//var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API
+var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 
 
 function InicioDeSesion() {
@@ -37,9 +38,6 @@ function InicioDeSesion() {
 
                     sessionStorage.setItem('token', data.TxtToken);
                     sessionStorage.setItem('Nombre', data.TxtUsuario);
-
-                    window.location.href = "./src/dashboard.php";
-
                     MenuUsuario();
 
                 } else {
@@ -76,7 +74,10 @@ function MenuUsuario() {
             window.location.href = "../index.html";
 
         } else {
+
             sessionStorage.setItem('ResultadoMenuDeUsuario', JSON.stringify(response));
+            window.location.href = "./src/dashboard.php";
+
         }
     });
 }

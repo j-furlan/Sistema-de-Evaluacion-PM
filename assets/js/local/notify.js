@@ -5,7 +5,7 @@ myNotification = {
 
         $.notify({
             icon: icon,
-            message: "<b>" + title + "</b> - " + message + "!."
+            message: "<b>" + title + "</b> - " + message + "!"
 
         }, {
             type: color,

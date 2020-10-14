@@ -1,4 +1,5 @@
-var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API 
+//var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API 
+var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 VerificarExistenciaToken();
 
 function VerificarExistenciaToken() {
@@ -29,7 +30,7 @@ function VerificarVigenciaToken() {
         console.log(response);
         if (response === 0) {
             sessionStorage.clear();
-            myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Su sesión expiró, registrese de nuevo.');
+            myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Su sesión expiró, inicie sesión de nuevo.');
             setTimeout(function() {
                 window.location.href = "../index.html";
             }, 3000);

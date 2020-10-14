@@ -23,7 +23,8 @@
 
 <script type="text/javascript">
   window.onload= function(){
-    myNotification.showNotification('fas fa-smile', 'info', '¡Bienvenido Administrador!', 'No olvides revisar tus notificaciones.');
+    var nombre = sessionStorage.getItem('Nombre');
+    myNotification.showNotification('fas fa-smile', 'info', '¡Bienvenido '+ nombre +'!','No olvides revisar tus notificaciones');
   }                
 </script>
 

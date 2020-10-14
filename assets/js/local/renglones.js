@@ -1,4 +1,5 @@
-var UrlApi = "http://localhost:64315/API/";
+//var UrlApi = "http://localhost:64315/API/";
+var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -19,15 +20,15 @@ function AgregarRenglon() {
 
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
-            
+
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se agregó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El renglon se agregó correctamente.');
                 LimpiarFormulario();
                 ObtenerRenglones();
                 $('#AgregarRenglonModal').modal('hide');
 
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el Renglon');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar el renglon');
             }
         });
     });
@@ -53,13 +54,13 @@ function ObtenerRenglones() {
     };
 
     $.ajax(settings).done(function(response) {
-        
+
         console.log(response.length);
         LimpiarFormulario();
-        
+
         $.each(response, function(index, data) {
             sessionStorage.setItem('Renglones', response.length);
-                var fila = "<tr> <td>" + index +
+            var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtRenglon +
                 "</td><td>" + data.FechaIngreso +
                 "<td class='text-center'><a href='#' id='EditarRenglones' onclick='ObtenerDatosRenglon(" + data.IdRenglon + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
@@ -86,11 +87,11 @@ function EliminarRenglon(IdRenglon) {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se eliminó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El renglon se eliminó correctamente.');
                 LimpiarFormulario();
                 ObtenerRenglones();
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el Renglon.');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar el renglon.');
 
             }
         });
@@ -143,13 +144,13 @@ function ActualizarRenglon() {
     $.ajax(settings).done(function(response) {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
-                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El Renglon se modificó correctamente.');
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'El renglon se modificó correctamente.');
                 LimpiarFormulario();
                 ObtenerRenglones();
                 $('#AgregarRenglonModal').modal('hide');
 
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el Renglon');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar el renglon');
 
             }
         });

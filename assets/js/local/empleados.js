@@ -1,4 +1,5 @@
-var UrlApi = "http://localhost:64315/API/";
+//var UrlApi = "http://localhost:64315/API/";
+var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -143,7 +144,7 @@ function AgregarEmpleado() {
                 $('#AgregarEmpleadoModal').modal('hide');
 
             } else {
-                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se puede agregar el Empleado');
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se puede agregar el empleado.');
             }
         });
     });
