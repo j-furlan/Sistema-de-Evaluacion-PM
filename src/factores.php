@@ -34,7 +34,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Pagina de Factores</h1>
-           
+
           <!-- Table -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -79,7 +79,7 @@
 
   </div>
   <!-- End of Page Wrapper -->
-  
+
   <!-- Footer -->
   <?php include('../layout/footer.html'); ?>
   <!-- End of Footer -->
@@ -113,7 +113,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          
+
         </div>
       </div>
     </div>
@@ -147,7 +147,7 @@
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
-  <script src="../assets/js/local/subfactores.js"></script>
+  <script src="../assets/js/local/factores.js"></script>
 </body>
 
 </html>

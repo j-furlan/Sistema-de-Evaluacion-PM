@@ -5,12 +5,12 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>Factores</title>
+  <title>Escalas De Calificaciones</title>
 
 
 </head>
 
-<body id="page-top" onload="ObtenerSubFactores();">
+<body id="page-top" onload="ObtenerEscalasDeCalificaciones();">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -33,30 +33,31 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Pagina de Sub-Factores</h1>
+          <h1 class="h3 mb-4 text-gray-800">Pagina de Escalas De Calificacion</h1>
 
           <!-- Table -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="row">
                     <div class="col">
-                        <h6 class="m-0 font-weight-bold text-primary">Lista De Sub-Factores</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Lista De Escalas De Calificacion</h6>
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarSubFactorModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarEscalasDeCalificacionModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
 
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered DatosSubFactores" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosEscalasDeCalificaciones" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>Id</th>
-                        <th>Nombre Sub-Factor</th>
-                        <th>Descripcion Sub-Factor</th>
+                        <th>Nombre Escala Calificacion</th>
+                        <th>Punteo</th>
+                        <th>Descripcion</th>
                         <th>Fecha Agregado</th>
                         <th colspan="2">Opciones</th>
                         </tr>
@@ -90,21 +91,22 @@
   </a>
 
   <!-- Agregar Especialidad Modal-->
-  <div class="modal fade" id="AgregarSubFactorModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
+  <div class="modal fade" id="AgregarEscalasDeCalificacionModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleAddUserModal">Registro de Sub-Factores</h5>
+          <h5 class="modal-title" id="exampleAddUserModal">Registro de Escalas De Calificacion</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">
-        <form id="registroSubFactor">
+        <form id="registroPuesto">
             <div class="form-group">
-              <label>Sub-Factores</label>
-              <input type="text" class="form-control" id="TxtSubFactor" placeholder="Nombre de Sub-Factor">
-              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripcion de Sub-Factor">
+              <label>Factores</label>
+              <input type="text" class="form-control" id="TxtEscalaDeCalificacion" placeholder="Nombre de Escala de Calificacion">
+              <input type="text" class="form-control" id="DblPunteo" placeholder="Punteo de Calificacion">
+              <input type="text" class="form-control" id="TxtrDescripcion" placeholder="Descripcion de Escala de Calificacion">
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>
@@ -147,7 +149,7 @@
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
-  <script src="../assets/js/local/subfactores.js"></script>
+  <script src="../assets/js/local/escalasdecalificaciones.js"></script>
 </body>
 
 </html>
