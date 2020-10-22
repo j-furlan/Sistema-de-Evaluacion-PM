@@ -5,12 +5,12 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>Escalas De Calificaciones</title>
+  <title>Escalas De Calificación</title>
 
 
 </head>
 
-<body id="page-top" onload="ObtenerEscalasDeCalificaciones();">
+<body id="page-top" onload="ObtenerEscalasDeCalificacion();">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -44,14 +44,14 @@
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarEscalasDeCalificacionModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarEscalaDeCalificacionModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
 
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered DatosEscalasDeCalificaciones" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosEscalasDeCalificacion" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>Id</th>
@@ -91,7 +91,7 @@
   </a>
 
   <!-- Agregar Especialidad Modal-->
-  <div class="modal fade" id="AgregarEscalasDeCalificacionModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
+  <div class="modal fade" id="AgregarEscalaDeCalificacionModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -105,9 +105,17 @@
             <div class="form-group">
               <label>Factores</label>
               <input type="text" class="form-control" id="TxtEscalaDeCalificacion" placeholder="Nombre de Escala de Calificacion">
-              <input type="text" class="form-control" id="DblPunteo" placeholder="Punteo de Calificacion">
-              <input type="text" class="form-control" id="TxtrDescripcion" placeholder="Descripcion de Escala de Calificacion">
             </div>
+            <div class="form-group">
+              <label>Punteo</label>
+              <input type="text" class="form-control" id="DblPunteo" placeholder="Punteo de Calificacion">
+            </div>
+            <div class="form-group">
+              <label>Descripción</label>
+              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripción de Escala de Calificacion">
+
+            </div>
+
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacion">Guardar</button>
@@ -149,7 +157,7 @@
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
-  <script src="../assets/js/local/escalasdecalificaciones.js"></script>
+  <script src="../assets/js/local/escalasdecalificacion.js"></script>
 </body>
 
 </html>

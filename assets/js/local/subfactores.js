@@ -1,5 +1,5 @@
-//var UrlApi = "http://localhost:64315/API/";
-var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
+var UrlApi = "http://localhost:64315/API/";
+//var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -15,7 +15,7 @@ function AgregarSubFactor() {
         "data": JSON.stringify({
 
             "TxtSubFactor": $("#TxtSubFactor").val(),
-            "TxtSubDescripcion": $("#TxtSubDescripcion").val(),
+            "TxtDescripcion": $("#TxtDescripcion").val(),
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
@@ -62,7 +62,7 @@ function ObtenerSubFactores() {
         $.each(response, function(index, data) {
             sessionStorage.setItem('SubFactores', response.length);
             console.log(sessionStorage.getItem('SubFactores'));
-            var fila = "<tr> <td>" + index +
+            var fila = "<tr> <td>" + data.IdSubFactor +
                 "</td><td>" + data.TxtSubFactor +
                 "</td><td>" + data.TxtDescripcion +
                 "</td><td>" + data.FechaIngreso +
@@ -103,7 +103,7 @@ function EliminarSubFactor(IdSubFactor) {
 
 function ObtenerDatosSubFactor(IdSubFactor) {
     var settings = {
-        "url": UrlApi + "ObtenerDatosFactor",
+        "url": UrlApi + "ObtenerDatosSubFactor",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -119,7 +119,7 @@ function ObtenerDatosSubFactor(IdSubFactor) {
         //mostra modal para editar especialidad
         $('#AgregarSubFactorModal').modal('show');
         LimpiarFormulario();
-        $("#IdOculto").val(IdFactor);
+        $("#IdOculto").val(IdSubFactor);
 
         $.each(response, function(index, data) {
 

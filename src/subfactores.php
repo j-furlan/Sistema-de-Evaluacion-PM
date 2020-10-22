@@ -104,7 +104,10 @@
             <div class="form-group">
               <label>Sub-Factores</label>
               <input type="text" class="form-control" id="TxtSubFactor" placeholder="Nombre de Sub-Factor">
-              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripcion de Sub-Factor">
+            </div>
+            <div class="form-group">
+              <label>Descripción</label>
+              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripcion de XubFactor">  
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>

@@ -104,7 +104,10 @@
             <div class="form-group">
               <label>Factores</label>
               <input type="text" class="form-control" id="TxtFactor" placeholder="Nombre de Factor">
-              <input type="text" class="form-control" id="TxtrDescripcion" placeholder="Descripcion de Factor">
+            </div>
+            <div class="form-group">
+              <label>Descripción</label>
+              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripcion de Factor">  
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>

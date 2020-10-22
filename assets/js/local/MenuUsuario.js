@@ -1,5 +1,5 @@
-//var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API 
-var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
+var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API 
+//var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 
 //OBTIENE LOS DATOS PARA EL MENU DESDE LA VARIABLE DE SESION.
 

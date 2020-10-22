@@ -1,12 +1,12 @@
-//var UrlApi = "http://localhost:64315/API/";
-var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
+var UrlApi = "http://localhost:64315/API/";
+//var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
 
-function AgregarEscalasDeCalificacion() {
+function AgregarEscalaDeCalificacion() {
     var settings = {
-        "url": UrlApi + "AgregarEscalasDeCalificacion",
+        "url": UrlApi + "AgregarEscalaDeCalificacion",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -26,8 +26,8 @@ function AgregarEscalasDeCalificacion() {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'La Escala De Calificacion se agregó correctamente.');
                 LimpiarFormulario();
-                ObtenerEscalasDeCalificaciones();
-                $('#AgregarEscalasDeCalificacionModal').modal('hide');
+                ObtenerEscalasDeCalificacion();
+                $('#AgregarEscalaDeCalificacionModal').modal('hide');
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo agregar la Escala De Calificacion');
             }
@@ -43,11 +43,11 @@ function LimpiarFormulario() {
     $("#TxtDescripcion").val("");
 }
 
-function ObtenerEscalasDeCalificaciones() {
-    $(".DatosEscalasDeCalificaciones td").remove();
+function ObtenerEscalasDeCalificacion() {
+    $(".DatosEscalasDeCalificacion td").remove();
 
     var settings = {
-        "url": UrlApi + "ObtenerEscalasDeCalificaciones",
+        "url": UrlApi + "ObtenerEscalasDeCalificacion",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -64,20 +64,20 @@ function ObtenerEscalasDeCalificaciones() {
         $.each(response, function(index, data) {
             sessionStorage.setItem('EscalasDeCalificacion', response.length);
             console.log(sessionStorage.getItem('EscalasDeCalificacion'));
-            var fila = "<tr> <td>" + index +
+            var fila = "<tr> <td>" + data.IdEscalaDeCalificacion +
                 "</td><td>" + data.TxtEscalaDeCalificacion +
                 "</td><td>" + data.DblPunteo +
                 "</td><td>" + data.TxtDescripcion +
                 "</td><td>" + data.FechaIngreso +
-                "<td class='text-center'><a href='#' id='EditarEscalasDeCalificacion' onclick='ObtenerDatosEscalasDeCalificacion(" + data.IdEscalaDeCalificacion + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
+                "<td class='text-center'><a href='#' id='EditarEscalasDeCalificacion' onclick='ObtenerDatosEscalaDeCalificacion(" + data.IdEscalaDeCalificacion + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEscalaDeCalificacion + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
 
-            $(fila).appendTo(".DatosEscalasDeCalificaciones");
+            $(fila).appendTo(".DatosEscalasDeCalificacion");
         });
     });
 }
 
-function EliminarEscalasDeCalificacion(IdEscalaDeCalificacion) {
+function EliminarEscalaDeCalificacion(IdEscalaDeCalificacion) {
     var settings = {
         "url": UrlApi + "EliminarEscalaDeCalificacion",
         "method": "POST",
@@ -96,7 +96,7 @@ function EliminarEscalasDeCalificacion(IdEscalaDeCalificacion) {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'La Escala De Calificacion se eliminó correctamente.');
                 LimpiarFormulario();
-                ObtenerEscalasDeCalificaciones();
+                ObtenerEscalasDeCalificacion();
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se pudo eliminar la Escala De Calificacion');
             }
@@ -104,7 +104,7 @@ function EliminarEscalasDeCalificacion(IdEscalaDeCalificacion) {
     });
 }
 
-function ObtenerDatosEscalasDeCalificacion(IdEscalaDeCalificacion) {
+function ObtenerDatosEscalaDeCalificacion(IdEscalaDeCalificacion) {
     var settings = {
         "url": UrlApi + "ObtenerDatosEscalaDeCalificacion",
         "method": "POST",
@@ -121,7 +121,7 @@ function ObtenerDatosEscalasDeCalificacion(IdEscalaDeCalificacion) {
     $.ajax(settings).done(function(response) {
         //mostra modal para editar especialidad
         $('#AgregarEscalaDeCalificacionModal').modal('show');
-        LimpiarFormulario();
+        //LimpiarFormulario();
         $("#IdOculto").val(IdEscalaDeCalificacion);
 
         $.each(response, function(index, data) {
@@ -134,9 +134,9 @@ function ObtenerDatosEscalasDeCalificacion(IdEscalaDeCalificacion) {
     });
 }
 
-function ActualizarEscalasDeCalificacion() {
+function ActualizarEscalaDeCalificacion() {
     var settings = {
-        "url": UrlApi + "ActualizarEscalasDeCalificacion",
+        "url": UrlApi + "ActualizarEscalaDeCalificacion",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -156,9 +156,9 @@ function ActualizarEscalasDeCalificacion() {
         $.each(response, function(index, data) {
             if (data.Resultado > 0) {
                 myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'La Escala De Calificacion se modificó correctamente.');
-                $('#AgregarEscalasDeCalificacionModal').modal('hide');
+                $('#AgregarEscalaDeCalificacionModal').modal('hide');
                 LimpiarFormulario();
-                ObtenerEscalasDeCalificaciones();
+                ObtenerEscalasDeCalificacion();
             } else {
                 myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS!', 'Algo no cuadro, no se pudo modificar la Escala De Calificacion');
 
@@ -173,9 +173,9 @@ function Guardar() {
         EliminarEscalaDeCalificacion(RegistroEliminar);
         $("#IdOculto").val("");
     } else if ($("#IdOculto").val() > 0) {
-        ActualizarEscalasDeCalificacion();
+        ActualizarEscalaDeCalificacion();
     } else {
-        AgregarEscalasDeCalificacion();
+        AgregarEscalaDeCalificacion();
     }
 }
 

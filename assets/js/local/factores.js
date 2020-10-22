@@ -1,5 +1,5 @@
-//var UrlApi = "http://localhost:64315/API/";
-var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
+var UrlApi = "http://localhost:64315/API/";
+//var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
@@ -62,7 +62,7 @@ function ObtenerFactores() {
         $.each(response, function(index, data) {
             sessionStorage.setItem('Factores', response.length);
             console.log(sessionStorage.getItem('Factores'));
-            var fila = "<tr> <td>" + index +
+            var fila = "<tr> <td>" + data.IdFactor +
                 "</td><td>" + data.TxtFactor +
                 "</td><td>" + data.TxtDescripcion +
                 "</td><td>" + data.FechaIngreso +
