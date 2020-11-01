@@ -1,5 +1,5 @@
-//var UrlApi = "http://localhost:64315/API/";
-var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
+var UrlApi = "http://localhost:64315/API/";
+//var UrlApi = "https://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 

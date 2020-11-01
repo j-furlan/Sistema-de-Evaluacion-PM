@@ -5,12 +5,12 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>Factores</title>
+  <title>Tipos de Evaluación</title>
 
 
 </head>
 
-<body id="page-top" onload="ObtenerSubFactores(); ObtenerFactores();">
+<body id="page-top" onload="ObtenerTiposDeEvaluacion();">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -33,31 +33,30 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Pagina de Sub-Factores</h1>
+          <h1 class="h3 mb-4 text-gray-800">Pagina de Tipos de Evaluación</h1>
 
           <!-- Table -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="row">
                     <div class="col">
-                        <h6 class="m-0 font-weight-bold text-primary">Lista De Sub-Factores</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Lista De Tipos de Evaluación</h6>
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarSubFactorModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarTipoDeEvaluacionModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
 
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered DatosSubFactores" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosTiposDeEvaluacion" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>Id</th>
-                        <th>Nombre Sub-Factor</th>
-                        <th>Descripcion Sub-Factor</th>
-                        <th>Factor</th>
+                        <th>Nombre Tipo</th>
+                        <th>Descripcion</th>
                         <th>Fecha Agregado</th>
                         <th colspan="2">Opciones</th>
                         </tr>
@@ -90,31 +89,25 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Agregar Especialidad Modal-->
-  <div class="modal fade" id="AgregarSubFactorModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
+  <!-- Agregar Tipo de Evaluacion Modal-->
+  <div class="modal fade" id="AgregarTipoDeEvaluacionModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleAddUserModal">Registro de Sub-Factores</h5>
+          <h5 class="modal-title" id="exampleAddUserModal">Registro de Factores</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">
-        <form id="registroSubFactor">
+        <form id="registroTipoDeEvaluacion">
             <div class="form-group">
-              <label>Sub-Factores</label>
-              <input type="text" class="form-control" id="TxtSubFactor" placeholder="Nombre de Sub-Factor">
+              <label>Nombre Tipo de Evaluación</label>
+              <input type="text" class="form-control" id="TxtTipoDeEvaluacion" placeholder="Nombre de tipo de evaluación">
             </div>
             <div class="form-group">
               <label>Descripción</label>
-              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripcion de XubFactor">  
-            </div>
-            <div class="form-group">
-            <label>Factor</label>
-              <select id="SelectFactor" class="form-control">
-                <option >Elegir...</option>
-              </select> 
+              <input type="text" class="form-control" id="TxtDescripcion" placeholder="Descripcion de tipo de evaluacion">  
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>
@@ -157,7 +150,7 @@
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
-  <script src="../assets/js/local/subfactores.js"></script>
+  <script src="../assets/js/local/tipos-de-evaluacion.js"></script>
 </body>
 
 </html>

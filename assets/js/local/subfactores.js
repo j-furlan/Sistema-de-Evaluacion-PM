@@ -3,6 +3,27 @@ var UrlApi = "http://localhost:64315/API/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 
+function ObtenerFactores() {
+    var settings = {
+        "url": UrlApi + "ObtenerFactores",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function(response) {
+
+        $.each(response, function(index, data) {
+            var opcion = "<option class='opciones' value='" + data.IdFactor + "'>" + data.TxtFactor + "</option>";
+            $(opcion).appendTo("#SelectFactor");
+        });
+
+    });
+}
 
 function AgregarSubFactor() {
     var settings = {
@@ -16,6 +37,7 @@ function AgregarSubFactor() {
 
             "TxtSubFactor": $("#TxtSubFactor").val(),
             "TxtDescripcion": $("#TxtDescripcion").val(),
+            "IdFactor": $("#SelectFactor option:selected").val(),
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
@@ -39,6 +61,8 @@ function LimpiarFormulario() {
     $("#IdOculto").val("");
     $("#TxtSubFactor").val("");
     $("#TxtDescripcion").val("");
+    $("#SelectFactor").val($("#SelectFactor option:first").val());
+
 }
 
 function ObtenerSubFactores() {
@@ -65,6 +89,7 @@ function ObtenerSubFactores() {
             var fila = "<tr> <td>" + data.IdSubFactor +
                 "</td><td>" + data.TxtSubFactor +
                 "</td><td>" + data.TxtDescripcion +
+                "</td><td>" + data.TxtFactor +
                 "</td><td>" + data.FechaIngreso +
                 "<td class='text-center'><a href='#' id='EditarSubFactor' onclick='ObtenerDatosSubFactor(" + data.IdSubFactor + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdSubFactor + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
@@ -125,6 +150,7 @@ function ObtenerDatosSubFactor(IdSubFactor) {
 
             $("#TxtSubFactor").val(data.TxtSubFactor);
             $("#TxtDescripcion").val(data.TxtDescripcion);
+            $("#SelectFactor option[value=" + data.IdFactor + "]").prop("selected", true);
 
         });
     });
@@ -142,6 +168,7 @@ function ActualizarSubFactor() {
             "IdSubFactor": $("#IdOculto").val(),
             "TxtSubFactor": $("#TxtSubFactor").val(),
             "TxtDescripcion": $("#TxtDescripcion").val(),
+            "IdFactor": $("#SelectFactor option:selected").val(),
             "TxtToken": sessionStorage.getItem('token')
 
         }),
