@@ -9,7 +9,7 @@
 
 </head>
 
-<body id="page-top" onload="ObtenerEvaluacionesEncabezados(); ObtenerDatos();">
+<body id="page-top" onload="ObtenerEvaluaciones(); ObtenerDatos();">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -32,41 +32,39 @@
         <div class="container-fluid">
 
           <!-- Formulario Encabezado -->
-          <div class="card mx-auto shadow mb-4">
+          <div class="card w-75 mx-auto shadow mb-4">
             <div class="card-header py-3">
                 <div class="row">
                     <div class="col">
                         <h6 class="m-0 font-weight-bold text-primary">Encabezado de nueva evaluacion</h6>
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
+                  <div class="col ml-2">
+<!--                       <a class="float-right" data-toggle="modal" data-target="#AgregarEvaluacionModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+ -->                  </div>
                 </div>
             </div>
 
             <div class="card-body">
-              <form id="">
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label>Tipo de Evaluación</label>
-                      <select id="SelectTipoDeEvaluacion" class="form-control">
-                        <option >Elegir...</option>
-                      </select>
-                    </div>
-
-                  <div class="form-group col-md-3">
-                    <label>Año</label>
-                      <input type="number" class="form-control" id="TxtAnio" placeholder="Año">
+              <form id="registroEncabezadoEvaluacion">
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label>Tipo de Evaluación</label>
+                    <select id="SelectTipoDeEvaluacion" class="form-control">
+                      <option >Elegir...</option>
+                    </select>
                   </div>
 
-                  <div class="form-group col-md-3">
-                    <label class="text-center">`</label>
-                    <div class="text-center">
-                      <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEncabezado();">Cancelar</button>
-                      <button type="button" class="btn btn-primary" onclick="Guardar();">Guardar</button>
-                    </div>
-                  </div>
-                  
+                <div class="form-group col-md-4">
+                  <label>Año</label>
+                    <input type="number" class="form-control" id="TxtAnio" placeholder="Año">
                 </div>
+              </div>
 
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacion">Guardar</button>
+                </div>
               </form>
             </div>
           </div>
@@ -90,7 +88,6 @@
                   <table class="table table-bordered DatosEvaluaciones" id="" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                        <th>#</th>
                         <th>Año</th>
                         <th>Tipo de Evaluación</th>
                         <th>Descripción</th>
@@ -130,15 +127,14 @@
   <div class="modal fade" id="AgregarFactoresModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-primary">
-         <div class="mx-auto">
-           <h5 class="modal-title" id="exampleAddUserModal">Agregar o Modificar Factores</h5>
-           <div class="" id="EncabezadoSelecionado">123</div>
-
-         </div>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormulario();">
-              <span aria-hidden="true">×</span>
-            </button>
+        <div class="modal-header">
+          <div class="modal-title">
+          <h5 class="modal-title" id="exampleAddUserModal">Agregar o Modificar Factores:</h5>
+          <p id="EncabezadoSeleccionado"></p>
+          </div>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormulario();">
+            <span aria-hidden="true">×</span>
+          </button>
         </div>
         <div class="modal-body">
         <form id="registroEvaluaciones">
@@ -156,8 +152,8 @@
           </div>
       
             <div class="text-center">
-              <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEvaluacionDetalle();">Cancelar</button>
-              <button type="button" class="btn btn-primary" >Guardar</button>
+              <button type="button" class="btn btn-danger" onclick="LimpiarFormulario();">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacion">Guardar</button>
             </div>
           </form>
       

@@ -64,7 +64,7 @@ function ObtenerTiposDeEvaluacion() {
             var fila = "<tr> <td>" + data.IdTipoDeEvaluacion +
                 "</td><td>" + data.TxtTipoDeEvaluacion +
                 "</td><td>" + data.TxtDescripcion +
-                "</td><td>" + data.FechaIngreso +
+                "</td><td>" + (data.FechaIngreso).substring(0,10) +
                 "<td class='text-center'><a href='#' id='EditarTipoDeEvaluacion' onclick='ObtenerDatosTipoDeEvaluacion(" + data.IdTipoDeEvaluacion + ");'><i class='fas fa-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdTipoDeEvaluacion + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
 
