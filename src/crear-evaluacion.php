@@ -134,7 +134,7 @@
         <div class="modal-header">
           <div class="modal-title">
           <h5 class="modal-title" id="exampleAddUserModal">Agregar o Modificar Factores:</h5>
-          <p id="EncabezadoSeleccionado">Encabezado Seleccionado</p>
+          <p id="EncabezadoSeleccionado"></p>
           </div>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormulario();">
             <span aria-hidden="true">×</span>
@@ -170,7 +170,7 @@
                       <thead>
                         <tr>
                         <th>Factor</th>
-                        <th rowspan="2">SubFactor</th>
+                        <th>SubFactor</th>
                         </tr>
                       </thead>
                   <tbody></tbody>
