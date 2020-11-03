@@ -46,7 +46,7 @@
                 <div class="table-responsive">
                     <div id="toPDF">    
                         <table class="table">
-                            
+                        <div class="text-center"><img class="text-center" src="../assets/img/logo.png"></div>
                             <div class="text-justify">                         
                                 <p>
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -59,7 +59,7 @@
                                     versions of Lorem Ipsum.
                                 </p>
                             </div>
-                            <div class="text-center"><img class="text-center" src="../assets/img/logo.png"></div>
+                            
                             
                             <thead class="thead-dark">
                                 <tr>
