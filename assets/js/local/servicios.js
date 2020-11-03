@@ -63,8 +63,8 @@ function ObtenerServicios() {
             var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtServicio +
                 "</td><td>" + data.FechaIngreso +
-                "<td class='text-center'><a href='#' id='EditarServicio' onclick='ObtenerDatosServicio(" + data.IdServicio + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdServicio + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+                "<td class='text-center'><a href='#' id='EditarServicio' onclick='ObtenerDatosServicio(" + data.IdServicio + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdServicio + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
 
             $(fila).appendTo(".DatosServicios");
         });

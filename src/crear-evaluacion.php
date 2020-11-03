@@ -5,7 +5,7 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>SB Admin 2 - Crear Evaluacion </title>
+  <title>SisEval - Crear Evaluacion </title>
 
 </head>
 
@@ -31,16 +31,12 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Crear Una Nueva Evaluacion</h1>
-          
-
           <!-- Formulario Encabezado -->
           <div class="card w-75 mx-auto shadow mb-4">
             <div class="card-header py-3">
                 <div class="row">
                     <div class="col">
-                        <h6 class="m-0 font-weight-bold text-primary">Creacion de Encabezado</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Encabezado de nueva evaluacion</h6>
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
@@ -82,7 +78,7 @@
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarFactoresModal" onclick="LimpiarFormulario();"><i class="fas fa-user-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarFactoresModal" onclick="LimpiarFormulario();"><i class="fas fa-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
@@ -95,7 +91,7 @@
                         <th>Año</th>
                         <th>Tipo de Evaluación</th>
                         <th>Descripción</th>
-                        <th colspan="3">Opciones</th>
+                        <th colspan="3" class="text-center">Opciones</th>
                         </tr>
                       </thead>
                   <tbody></tbody>

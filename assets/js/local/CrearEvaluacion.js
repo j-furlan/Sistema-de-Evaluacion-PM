@@ -116,9 +116,9 @@ function ObtenerEvaluaciones() {
             var fila = "<tr><td>" + data.Anio +
                 "</td><td>" + data.TxtTipoDeEvaluacion +
                 "</td><td>" + data.TxtDescripcion +
-                "</td><td class='text-center'><a href='#' id='EditarEvaluacionEncabezado' onclick='ObtenerDatosEvaluacionEncabezado(" + data.IdEvaluacionEncabezado + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='ObtenerFactoresSubFactorTabla();' data-toggle='modal' data-target='#AgregarFactoresModal'><i class='fas fa-plus-circle text-info'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEvaluacionEmpleado + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a></tr>";
+                "</td><td class='text-center'><a href='#' id='EditarEvaluacionEncabezado' onclick='ObtenerDatosEvaluacionEncabezado(" + data.IdEvaluacionEncabezado + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='ObtenerFactoresSubFactorTabla();' data-toggle='modal' data-target='#AgregarFactoresModal'><i class='fas fa-sliders-h text-info'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEvaluacionEmpleado + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a></tr>";
             $(fila).appendTo(".DatosEvaluaciones");
         });
     });
@@ -199,7 +199,7 @@ function ObtenerFactoresSubFactorTabla() {
 
 function ObtenerSubFactoresTabla() {
 
-    for
+    
 
     var settings = {
         "url": UrlApi + "ObtenerEvaluacionesDetalle",

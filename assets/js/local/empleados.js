@@ -194,8 +194,8 @@ function ObtenerEmpleados() {
                 "</td><td>" + data.TxtServicio +
                 "</td><td>" + data.TxtRenglon +
                 "</td><td>" + data.TxtInstitucion +
-                "</td><td class='text-center'><a href='#' id='EditarEmpleado' onclick='ObtenerDatosEmpleado(" + data.IdEmpleado + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEmpleado + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+                "</td><td class='text-center'><a href='#' id='EditarEmpleado' onclick='ObtenerDatosEmpleado(" + data.IdEmpleado + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEmpleado + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
             $(fila).appendTo(".DatosEmpleados");
         });
     });
