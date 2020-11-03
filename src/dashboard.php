@@ -10,16 +10,12 @@
 
  ?>
 
-  <title>Home</title>
+  <title>SisEval - Home</title>
 
 
 </head>
 
 <body id="page-top">
-
-
-
-
 
 <script type="text/javascript">
   window.onload= function(){

@@ -5,7 +5,7 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>SB Admin 2 - Usuarios</title>
+  <title>SisEval - Usuarios</title>
   <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
@@ -32,9 +32,6 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
 
           <!-- DataTables Example -->
           <div class="card shadow mb-4">

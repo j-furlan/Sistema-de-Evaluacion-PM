@@ -63,8 +63,8 @@ function ObtenerPuestos() {
             var fila = "<tr> <td>" + index +
                 "</td><td>" + data.TxtPuesto +
                 "</td><td>" + data.FechaIngreso +
-                "<td class='text-center'><a href='#' id='EditarPuesto' onclick='ObtenerDatosPuesto(" + data.IdPuesto + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdPuesto + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+                "<td class='text-center'><a href='#' id='EditarPuesto' onclick='ObtenerDatosPuesto(" + data.IdPuesto + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdPuesto + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
 
             $(fila).appendTo(".DatosPuestos");
         });

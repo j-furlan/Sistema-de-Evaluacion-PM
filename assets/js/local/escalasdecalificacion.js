@@ -69,8 +69,8 @@ function ObtenerEscalasDeCalificacion() {
                 "</td><td>" + data.DblPunteo +
                 "</td><td>" + data.TxtDescripcion +
                 "</td><td>" + data.FechaIngreso +
-                "<td class='text-center'><a href='#' id='EditarEscalasDeCalificacion' onclick='ObtenerDatosEscalaDeCalificacion(" + data.IdEscalaDeCalificacion + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEscalaDeCalificacion + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+                "<td class='text-center'><a href='#' id='EditarEscalasDeCalificacion' onclick='ObtenerDatosEscalaDeCalificacion(" + data.IdEscalaDeCalificacion + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEscalaDeCalificacion + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
 
             $(fila).appendTo(".DatosEscalasDeCalificacion");
         });

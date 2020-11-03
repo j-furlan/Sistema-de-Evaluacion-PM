@@ -61,8 +61,8 @@ function ObtenerEspecialidades() {
             console.log(response.length);
             var fila = "<tr> <td>" + data.IdEspecialidad +
                 "</td><td>" + data.TxtEspecialidad + "</td>" +
-                "<td class='text-center'><a href='#' id='EditarEspecialidad' onclick='ObtenerDatosEspecialidad(" + data.IdEspecialidad + ");'><i class='fas fa-user-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEspecialidad + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-user-times text-danger'></i></a> </tr>";
+                "<td class='text-center'><a href='#' id='EditarEspecialidad' onclick='ObtenerDatosEspecialidad(" + data.IdEspecialidad + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEspecialidad + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
 
             $(fila).appendTo(".DatosEspecialidades");
         });
