@@ -1,4 +1,4 @@
-var UrlApi = "http://localhost:64315/API/"; // cambiar puerto de nuestra API
+var UrlApi = "http://localhost:64315/Api/"; // cambiar puerto de nuestra API
 //var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 
 
@@ -9,7 +9,7 @@ function InicioDeSesion() {
 
     if (email == "" || password == "") {
 
-        myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Porfavor llenar todos los campos.');
+        myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Por favor llenar todos los campos.');
 
     } else {
 
