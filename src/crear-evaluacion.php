@@ -61,7 +61,7 @@
                     <label class="text-center">`</label>
                     <div class="text-center">
                       <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEncabezado();">Cancelar</button>
-                      <button type="button" class="btn btn-primary" onclick="Guardar();">Guardar</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacionEncabezado">Guardar</button>
                     </div>
                   </div>
                   
@@ -80,7 +80,7 @@
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
-                      <a class="float-right" data-toggle="modal" data-target="#AgregarFactoresModal" onclick="LimpiarFormulario();"><i class="fas fa-plus fa-2x text-primary"></i></a>
+                      <a class="float-right" data-toggle="modal" data-target="#AgregarFactoresModal" onclick="LimpiarFormularioEncabezado();"><i class="fas fa-plus fa-2x text-primary"></i></a>
                   </div>
                 </div>
             </div>
@@ -130,13 +130,12 @@
   <div class="modal fade" id="AgregarFactoresModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-primary">
+        <div class="modal-header bg-primary align-items-center">
          <div class="mx-auto">
-           <h5 class="modal-title" id="exampleAddUserModal">Agregar o Modificar Factores</h5>
-           <div class="" id="EncabezadoSelecionado">123</div>
-
+           <h5 class="modal-title text-white" id="exampleAddUserModal">Agregar o Modificar Factores:</h5>
+           <div class="text-primary bg-light text-center" id="EncabezadoSeleccionado"></div>
          </div>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormulario();">
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormularioEvaluacionDetalle(); IdEvaluacionEncabezado ='';">
               <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -144,7 +143,7 @@
         <form id="registroEvaluaciones">
           <div class="form-group">
               <label>Factor</label>
-              <select id="SelectFactor" class="form-control" onchange="getval(this.value);">
+              <select id="SelectFactor" class="form-control" onchange="ObtenerFactorSeleccion(this.value);">
                 <option >Elegir...</option>
               </select>
           </div>
@@ -157,7 +156,7 @@
       
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEvaluacionDetalle();">Cancelar</button>
-              <button type="button" class="btn btn-primary" >Guardar</button>
+              <button type="button" class="btn btn-primary" onclick="AgregarEvaluacionDetalle();">Guardar</button>
             </div>
           </form>
       
@@ -182,7 +181,28 @@
     </div>
   </div>
 
- <!-- Modal Confirmación -->
+  <!-- Modal Confirmación Encabezado -->
+ <div class="modal fade" tabindex="-1" role="dialog" id="ModalConfirmacionEncabezado">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estas seguro de guardar cambios?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="GuardarEncabezado();" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Modal Confirmación Datalle -->
  <div class="modal fade" tabindex="-1" role="dialog" id="ModalConfirmacion">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -196,8 +216,8 @@
         <p>¿Estas seguro de guardar cambios?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="Guardar();" data-dismiss="modal">Guardar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="EliminarEvaluacionDetalle();" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="LimpiarFormularioEvaluacionDetalle();">Cancelar</button>
       </div>
     </div>
   </div>
