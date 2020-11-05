@@ -5,9 +5,12 @@ var RegistroEliminar = "";
 
 
 function ObtenerInstituciones() {
+
     var opcion = "<option class='opciones' value='1'>Ministerio de Salud Pública</option>";
     $(opcion).appendTo("#SelectInstitucion");
+
 }
+
 
 function ObtenerEvaluacionesEncabezado() {
 
@@ -25,8 +28,10 @@ function ObtenerEvaluacionesEncabezado() {
     $.ajax(settings).done(function(response) {
 
         $.each(response, function(index, data) {
-            var opcion = "<option class='opciones' value='" + data.IdEvaluacionEncabezado + "'>" + data.TxtTipoDeEvaluacion + "</option>";
+
+            var opcion = "<option class='opciones' value='" + data.IdEvaluacionEncabezado + "'>" + data.Anio + " - " + data.TxtTipoDeEvaluacion + "</option>";
             $(opcion).appendTo("#SelectEvaluacionesEncabezado");
+
         });
     });
 }
@@ -46,23 +51,71 @@ function ObtenerEmpleados() {
         }),
     };
     $.ajax(settings).done(function(response) {
+
         $.each(response, function(index, data) {
+
             var opcion = "<option class='opciones' value='" + data.IdEmpleado + "'>" + data.TxtNombres + ' ' + data.TxtApellidos + "</option>";
             $(opcion).appendTo("#SelectEmpleado");
+
         });
     });
 }
 
-function ObtenerDatosLocales() {
+function ObtenerDatos() {
+
     $(".opciones").remove();
     ObtenerInstituciones();
     ObtenerEvaluacionesEncabezado();
     ObtenerEmpleados();
+
+}
+
+function ObtenerEvaluacionesAplicadasEncabezados() {
+
+    $(".DatosEvaluacionesAplicadasEncabezados td").remove();
+
+    var settings = {
+        "url": UrlApi + "ObtenerEvaluacionesAplicadasEncabezado",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function(response) {
+
+        console.log(sessionStorage.getItem('token'));
+        LimpiarFormulario();
+
+        $.each(response, function(index, data) {
+            var fila = "<tr> <td>" + data.IdEvaluacionAplicadaEncabezado +
+                "</td><td>" + data.TxtInstitucion +
+                "</td><td>" + data.TxtEvaluacionEncabezado +
+                "</td><td>" + data.TxtEmpleado +
+                "</td><td>" + (data.FechaDeAplicacion).substring(0, 10) +
+                "</td><td>" + (data.FechaInicial).substring(0, 10) +
+                "</td><td>" + (data.FechaFinal).substring(0, 10) +
+                "</td><td>" + data.DblPunteoTotal +
+                "</td><td>" + data.TxtObservacionesDeJefe +
+                "</td><td>" + data.TxtObservacionesDelEmpleado +
+                "</td><td>" + data.IntNecesitaPlanDeMejora +
+                "</td><td class='text-center'><a href='#' onclick='ObtenerDatosEvaluacionAplicadaEncabezado(" + data.IdEvaluacionAplicadaEncabezado + ");'><i class='fas fa-edit text-warning'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='ObtenerEncabezadoAplicadoSeleccion(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#AgregarFactoresModal'><i class='fas fa-sliders-h text-info'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='EliminarEncabezadoAplicado(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#ModalConfirmacionEncabezado'><i class='fas fa-trash-alt text-danger'></i></a></tr>";
+            $(fila).appendTo(".DatosEvaluacionesAplicadasEncabezados");
+
+        });
+    });
 }
 
 
 function AgregarEvaluacionAplicadaEncabezado() {
-console.log("se esatra agregando una");
+
+    console.log("se esatra agregando una");
+
     var settings = {
         "url": UrlApi + "AgregarEvaluacionAplicadaEncabezado",
         "method": "POST",
@@ -76,7 +129,7 @@ console.log("se esatra agregando una");
             "IdEmpleado": $("#SelectEmpleado option:selected").val(),
             "FechaDeAplicacion": $("#FechaDeAplicacion").val(),
             "FechaInicial": $("#FechaInicial").val(),
-            "FechaFinal": $("#FechaFinal").val(),        
+            "FechaFinal": $("#FechaFinal").val(),
             "TxtToken": sessionStorage.getItem('token')
         }),
     };
@@ -111,47 +164,8 @@ function LimpiarFormulario() {
     $("#IntNecesitaPlanDeMejora").val("");
 }
 
-// ====================este no creo que se utilize==================================
-function ObtenerEvaluacionesAplicadasEncabezado() {
-    $("#DatosEvaluacionesAplicadasEncabezados td").remove();
 
-    var settings = {
-        "url": UrlApi + "ObtenerEvaluacionesAplicadasEncabezado",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "TxtToken": sessionStorage.getItem('token')
-        }),
-    };
-    $.ajax(settings).done(function(response) {
 
-        console.log(sessionStorage.getItem('token'));
-        LimpiarFormulario();
-
-        $.each(response, function(index, data) {            
-            var fila = "<tr> <td>" + data.IdEvaluacionAplicadaEncabezado +
-            "</td><td>" + data.TxtInstitucion +
-            "</td><td>" + data.TxtCodigoUE +
-            "</td><td>" + data.TxtEmpleado +
-            "</td><td>" + data.IdEvaluacionEncabezado +
-            "</td><td>" + data.TxtTipoDeEvaluacion +
-            "</td><td>" + (data.FechaDeAplicacion).substring(0,10) +
-            "</td><td>" + (data.FechaInicial).substring(0,10) +
-            "</td><td>" + (data.FechaFinal).substring(0,10) +
-            "</td><td>" + data.DblPunteoTotal +
-            "</td><td>" + data.IntNecesitaPlanDeMejora +
-            "</td><td>" + data.TxtUsuario +
-            "</td><td>" + (data.FechaIngreso).substring(0,10) +
-                "</td><td class='text-center'><a href='#' onclick='ObtenerDatosEvaluacionesAplicadasEncabezado(" + data.IdEvaluacionAplicadaEncabezado + ");'><i class='fas fa-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a> </tr>";
-            $(fila).appendTo("#DatosEvaluacionesAplicadasEncabezados");
-            
-        });
-    });
-}
 
 function EliminarEvaluacionesAplicadasEncabezado(IdEvaluacionAplicadaEncabezado) {
     var settings = {
@@ -203,18 +217,18 @@ function ObtenerDatosEvaluacionesAplicadasEncabezado(IdEvaluacionAplicadaEncabez
     $.ajax(settings).done(function(response) {
         $('#AgregarModal').modal('show');
         $("#IdOculto").val(IdEvaluacionAplicadaEncabezado);
-     console.log(IdEvaluacionAplicadaEncabezado);
-        $.each(response, function(index, data) {         
-          
+        console.log(IdEvaluacionAplicadaEncabezado);
+        $.each(response, function(index, data) {
+
             $("#SelectInstitucion option[value=" + data.IdInstitucion + "]").prop("selected", true);
             $("#SelectEvaluacionesEncabezado option[value=" + data.IdEvaluacionEncabezado + "]").prop("selected", true);
             $("#SelectEmpleado option[value=" + data.IdEmpleado + "]").prop("selected", true);
             $("#FechaDeAplicacion").val(data.FechaDeAplicacion);
             $("#FechaInicial").val(data.FechaInicial);
             $("#FechaFinal").val(data.FechaFinal);
-            $("#DblPunteoTotal").val(data.DblPunteoTotal);          
-            $("#TxtObservacionesDelJefe").val(data.TxtObservacionesDelJefe);          
-            $("#TxtObservacionesDelEmpleado").val(data.TxtObservacionesDelEmpleado);          
+            $("#DblPunteoTotal").val(data.DblPunteoTotal);
+            $("#TxtObservacionesDelJefe").val(data.TxtObservacionesDelJefe);
+            $("#TxtObservacionesDelEmpleado").val(data.TxtObservacionesDelEmpleado);
             $("#IntNecesitaPlanDeMejora").val(data.IntNecesitaPlanDeMejora);
         });
     });

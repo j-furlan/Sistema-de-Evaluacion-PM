@@ -9,7 +9,7 @@
 
 </head>
 
-<body id="page-top" onload="ObtenerEvaluacionesEncabezados(); ObtenerDatos(); ObtenerDatosLocales();">
+<body id="page-top" onload="ObtenerEvaluacionesAplicadasEncabezados(); ObtenerDatos();">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -111,13 +111,20 @@
 
             <div class="card-body">
               <div class="table-responsive">
-                  <table class="table table-bordered DatosEvaluaciones" id="" width="100%" cellspacing="0">
+                  <table class="table table-bordered DatosEvaluacionesAplicadasEncabezados" id="" width="100%" cellspacing="0">
                       <thead>
                         <tr>
                         <th>#</th>
-                        <th>Año</th>
-                        <th>Tipo de Evaluación</th>
-                        <th>Descripción</th>
+                        <th>Institucion</th>
+                        <th>Evaluación</th>
+                        <th>Empleado</th>
+                        <th>Fecha Aplicación</th>
+                        <th>Fecha Inicial</th>
+                        <th>Fecha Final</th>
+                        <th>Puntaje Total</th>
+                        <th>Observaciones Por Jefe</th>
+                        <th>Observaciones Por Empleado</th>
+                        <th>Necesita Plan de Mejora</th>
                         <th colspan="3" class="text-center">Opciones</th>
                         </tr>
                       </thead>
@@ -256,7 +263,7 @@
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
-  <script src="../assets/js/local/evaluacionesaplicadasencabezado.js"></script>
+  <script src="../assets/js/local/EvaluacionesAplicadasEncabezado.js"></script>
   <script src="../assets/js/local/CrearEvaluacion.js"></script>
 
 </body>
