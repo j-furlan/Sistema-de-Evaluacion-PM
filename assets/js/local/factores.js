@@ -43,7 +43,7 @@ function LimpiarFormulario() {
 
 function ObtenerFactores() {
     $(".DatosFactores td").remove();
-
+console.log(sessionStorage.getItem('token'));
     var settings = {
         "url": UrlApi + "ObtenerFactores",
         "method": "POST",

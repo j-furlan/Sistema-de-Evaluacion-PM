@@ -244,7 +244,6 @@ function ObtenerFactores() {
 }
 
 function ObtenerDatos() {
-
     $(".opciones").remove();
 
     ObtenerTiposDeEvaluacion();
@@ -286,8 +285,9 @@ function ObtenerSubFactores(FactorSeleccionado) {
     });
 }
 
-function ObtenerEvaluacionDetalle(IdEncabezado) {
 
+function ObtenerEvaluacionDetalle(IdEncabezado) {
+    console.log(sessionStorage.getItem('token'));
     $(".DatosFactores td").remove();
 
     var settings = {

@@ -52,7 +52,8 @@
                         <tr>
                         <th>Id</th>
                         <th>Especialidad</th>
-                        <th colspan="2">Opciones</th>
+                        <th>Fecha Ingreso</th>
+                        <th colspan="2" class="text-center">Opciones</th>
                         </tr>
                       </thead>
                   <tbody></tbody>
