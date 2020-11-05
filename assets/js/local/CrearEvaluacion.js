@@ -111,7 +111,7 @@ function ObtenerDatosEvaluacionEncabezado(IdEvaluacionEncabezado) {
 
         $.each(response, function(index, data) {
 
-            $("#SelectTipoDeEvaluacion option[value=" + data.IdEvaluacionEncabezado + "]").prop("selected", true);
+            $("#SelectTipoDeEvaluacion option[value=" + data.IdTipoDeEvaluacion + "]").prop("selected", true);
             $("#TxtAnio").val(data.Anio);
 
         });
