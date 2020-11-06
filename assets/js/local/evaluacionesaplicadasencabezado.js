@@ -61,7 +61,7 @@ function ObtenerEmpleados() {
     });
 }
 
-function ObtenerDatos() {
+function ObtenerDatosEncabezado() {
 
     $(".opciones").remove();
     ObtenerInstituciones();
@@ -69,6 +69,7 @@ function ObtenerDatos() {
     ObtenerEmpleados();
 
 }
+
 
 function ObtenerEvaluacionesAplicadasEncabezados() {
 
@@ -93,15 +94,10 @@ function ObtenerEvaluacionesAplicadasEncabezados() {
         $.each(response, function(index, data) {
             var fila = "<tr> <td>" + data.IdEvaluacionAplicadaEncabezado +
                 "</td><td>" + data.TxtInstitucion +
-                "</td><td>" + data.TxtEvaluacionEncabezado +
                 "</td><td>" + data.TxtEmpleado +
+                "</td><td>" + data.TxtTipoDeEvaluacion + //este yo lo agregue para no obtener el tipo de evaluacion por medio del idEncabezado. tambien modifique mi sp
                 "</td><td>" + (data.FechaDeAplicacion).substring(0, 10) +
-                "</td><td>" + (data.FechaInicial).substring(0, 10) +
-                "</td><td>" + (data.FechaFinal).substring(0, 10) +
-                "</td><td>" + data.DblPunteoTotal +
-                "</td><td>" + data.TxtObservacionesDeJefe +
-                "</td><td>" + data.TxtObservacionesDelEmpleado +
-                "</td><td>" + data.IntNecesitaPlanDeMejora +
+                "</td><td class='text-center'><a href='#' onclick='ObtenerDatosEvaluacionAplicadaEncabezado(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#ModalEvaluacionDetalle'><i class='far fa-eye text-info'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='ObtenerDatosEvaluacionAplicadaEncabezado(" + data.IdEvaluacionAplicadaEncabezado + ");'><i class='fas fa-edit text-warning'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='ObtenerEncabezadoAplicadoSeleccion(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#AgregarFactoresModal'><i class='fas fa-sliders-h text-info'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='EliminarEncabezadoAplicado(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#ModalConfirmacionEncabezado'><i class='fas fa-trash-alt text-danger'></i></a></tr>";
@@ -110,7 +106,6 @@ function ObtenerEvaluacionesAplicadasEncabezados() {
         });
     });
 }
-
 
 function AgregarEvaluacionAplicadaEncabezado() {
 
@@ -158,10 +153,10 @@ function LimpiarFormulario() {
     $("#FechaDeAplicacion").val("");
     $("#FechaInicial").val("");
     $("#FechaFinal").val("");
-    $("#DblPunteoTotal").val("");
-    $("#TxtObservacionesDelJefe").val("");
-    $("#TxtObservacionesDelEmpleado").val("");
-    $("#IntNecesitaPlanDeMejora").val("");
+   // $("#DblPunteoTotal").val("");
+    //$("#TxtObservacionesDelJefe").val("");
+   // $("#TxtObservacionesDelEmpleado").val("");
+   // $("#IntNecesitaPlanDeMejora").val("");
 }
 
 
@@ -234,6 +229,37 @@ function ObtenerDatosEvaluacionesAplicadasEncabezado(IdEvaluacionAplicadaEncabez
     });
 }
 
+//ObtenerDatosEvaluacionesAplicadasEncabezado para llenar el modal de datos de evaluacion aplicada encabezado
+function ObtenerDatosEvalAplicadasEncabezado(IdEvaluacionAplicadaEncabezado) {
+    var settings = {
+        "url": UrlApi + "ObtenerDatosEvaluacionesAplicadasEncabezado",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "IdEvaluacionAplicadaEncabezado": IdEvaluacionAplicadaEncabezado,
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function(response) {
+        $('#ModalEvaluacionDetalle').modal('show');
+        $.each(response, function(index, data) {
+            $("#SelectInstitucion option[value=" + data.IdInstitucion + "]").prop("selected", true);
+            $("#SelectEvaluacionesEncabezado option[value=" + data.IdEvaluacionEncabezado + "]").prop("selected", true);
+            $("#SelectEmpleado option[value=" + data.IdEmpleado + "]").prop("selected", true);
+            $("#FechaDeAplicacion").val(data.FechaDeAplicacion);
+            $("#FechaInicial").val(data.FechaInicial);
+            $("#FechaFinal").val(data.FechaFinal);
+            $("#DblPunteoTotal").val(data.DblPunteoTotal);
+            $("#TxtObservacionesDelJefe").val(data.TxtObservacionesDelJefe);
+            $("#TxtObservacionesDelEmpleado").val(data.TxtObservacionesDelEmpleado);
+            $("#IntNecesitaPlanDeMejora").val(data.IntNecesitaPlanDeMejora);
+        });
+    });
+}
+
 
 function ActualizarEvaluacionesAplicadasEncabezado() {
     var settings = {
@@ -279,8 +305,7 @@ function ActualizarEvaluacionesAplicadasEncabezado() {
 
 
 
-function Guardar() {
-
+function GuardarEncabezado() {
     if ($("#IdOculto").val() == "Eliminar") {
         EliminarEvaluacionesAplicadasEncabezado(RegistroEliminar);
         $("#IdOculto").val("");

@@ -5,11 +5,11 @@
 
 <?php include('../layout/head.html'); ?>
 
-  <title>SisEval - Crear Evaluacion </title>
+  <title>SisEval - Crear Evaluacion Aplicada </title>
 
 </head>
 
-<body id="page-top" onload="ObtenerEvaluacionesAplicadasEncabezados(); ObtenerDatos();">
+<body id="page-top" onload="ObtenerEvaluacionesAplicadasEncabezados(); ObtenerDatosEncabezado();">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -47,19 +47,19 @@
                     <div class="card-body">
                         <form id="">
                             <div class="form-row">
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <label>Institución</label>
                                     <select id="SelectInstitucion" class="form-control">
                                         <option >Elegir...</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <label>Tipo de Evaluación</label>
                                     <select id="SelectEvaluacionesEncabezado" class="form-control">
                                         <option >Elegir...</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <label>Empleado</label>
                                     <select id="SelectEmpleado" class="form-control">
                                         <option >Elegir...</option>
@@ -80,15 +80,15 @@
                                     <label>Fecha Final</label>
                                     <input type="date" class="form-control" id="FechaFinal">
                                 </div>
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label class="text-center">`</label>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEncabezado();">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacionEncabezado">Guardar</button>
+                                <div class="form-group col-md-3">
+                                    <label class="text-center">`</label>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEncabezado();">Cancelar</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalConfirmacionEncabezado">Guardar</button>
+                                    </div>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
             <div class="card-header py-3">
                 <div class="row">
                     <div class="col">
-                        <h6 class="m-0 font-weight-bold text-primary">Lista De Evaluaciones Creadas</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Lista De Encabezados Creadas</h6>
                         <input type="hidden" id="IdOculto" value="0" />
                     </div>
                   <div class="col ml-2">
@@ -116,16 +116,10 @@
                         <tr>
                         <th>#</th>
                         <th>Institucion</th>
-                        <th>Evaluación</th>
                         <th>Empleado</th>
+                        <th>Evaluación Aplicada</th>
                         <th>Fecha Aplicación</th>
-                        <th>Fecha Inicial</th>
-                        <th>Fecha Final</th>
-                        <th>Puntaje Total</th>
-                        <th>Observaciones Por Jefe</th>
-                        <th>Observaciones Por Empleado</th>
-                        <th>Necesita Plan de Mejora</th>
-                        <th colspan="3" class="text-center">Opciones</th>
+                        <th colspan="4" class="text-center">Opciones</th>
                         </tr>
                       </thead>
                   <tbody></tbody>
@@ -254,6 +248,128 @@
   </div>
 </div>
 
+ <!-- Modal Confirmación Datalle -->
+ <div class="modal fade" tabindex="-1" role="dialog" id="ModalEvaluacionDetalle">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title">Datos de Evaluacion Aplicada Encabezado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 table-responsive">
+            <label for="">Detalles Personales del Empleado</label>
+            <table  class="table table-bordered" style="font-size: 12px;">
+                <tr>
+                  <td>Nombre</td>
+                  <td>dasda</td>
+                </tr>
+                <tr>
+                  <td>Apellido</td>
+                  <td>sdsadsa</td>
+                </tr>
+                <tr>
+                  <td>Nit</td>
+                  <td>sadsadsa</td>
+                </tr>
+                <tr>
+                  <td>DPI</td>
+                  <td>dsadsadd</td>
+                </tr>
+                <tr>
+                  <td>Fecha Agregado</td>
+                  <td>sdsdsad</td>
+                </tr>
+            </table>
+          </div>
+          <div class="col-md-6 table-responsive">
+            <label for="">Detalles laborales del Empleado</label>
+            <table  class="table table-bordered" style="font-size: 12px;">
+                <tr>
+                  <td>Institucion</td>
+                  <td>zccz</td>
+                </tr>
+                <tr>
+                  <td>Puesto</td>
+                  <td>cxzcxz</td>
+                </tr>
+                <tr>
+                  <td>Especialidad</td>
+                  <td>sdfsfdsf</td>
+                </tr>
+                <tr>
+                  <td>Servicio</td>
+                  <td>fgdgfdgfdgd</td>
+                </tr>
+                <tr>
+                  <td>Renglon</td>
+                  <td>dsfdfdsfdsf</td>
+                </tr>
+            </table>
+          </div>
+         </div>
+         <div class="row">
+          <div class="col-md-6 table-responsive">
+            <label for="">Detalles Personales del Empleado</label>
+            <table  class="table table-bordered" style="font-size: 12px;">
+                <tr>
+                  <td>Nombre</td>
+                  <td>dasda</td>
+                </tr>
+                <tr>
+                  <td>Apellido</td>
+                  <td>sdsadsa</td>
+                </tr>
+                <tr>
+                  <td>Nit</td>
+                  <td>sadsadsa</td>
+                </tr>
+                <tr>
+                  <td>DPI</td>
+                  <td>dsadsadd</td>
+                </tr>
+                <tr>
+                  <td>Fecha Agregado</td>
+                  <td>sdsdsad</td>
+                </tr>
+            </table>
+          </div>
+          <div class="col-md-6 table-responsive">
+            <label for="">Detalles laborales del Empleado</label>
+            <table  class="table table-bordered" style="font-size: 12px;">
+                <tr>
+                  <td>Institucion</td>
+                  <td>zccz</td>
+                </tr>
+                <tr>
+                  <td>Puesto</td>
+                  <td>cxzcxz</td>
+                </tr>
+                <tr>
+                  <td>Especialidad</td>
+                  <td>sdfsfdsf</td>
+                </tr>
+                <tr>
+                  <td>Servicio</td>
+                  <td>fgdgfdgfdgd</td>
+                </tr>
+                <tr>
+                  <td>Renglon</td>
+                  <td>dsfdfdsfdsf</td>
+                </tr>
+            </table>
+          </div>
+         </div>
+      </div>
+      <div class="modal-footer">
+       <p>======</p>
+      </div>
+    </div>
+  </div>
+</div>
 
   <?php include('../layout/scripts.html'); ?>
 
@@ -263,8 +379,8 @@
 
   <!-- Page level custom scripts -->
   <script src="../assets/js/demo/datatables-demo.js"></script>
-  <script src="../assets/js/local/EvaluacionesAplicadasEncabezado.js"></script>
-  <script src="../assets/js/local/CrearEvaluacion.js"></script>
+  <script src="../assets/js/local/evaluacionesaplicadasencabezado.js"></script>
+  <!--<script src="../assets/js/local/CrearEvaluacion.js"></script>-->
 
 </body>
 

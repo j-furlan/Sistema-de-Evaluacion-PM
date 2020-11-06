@@ -436,8 +436,8 @@
   //include('./test.php'); 
   ?>
 <!-- Page level custom scripts -->
-<script src="../assets/js/demo/chart-area-demo.js"></script>
-<script src="../assets/js/demo/chart-pie-demo.js"></script>
+<scrip src="../assets/js/demo/chart-area-demo.js"></script>
+<scrip src="../assets/js/demo/chart-pie-demo.js"></scrip>
 <script>
   // obtener numero de Especialidades
   var NumEspecialidades = sessionStorage.getItem('Especialidades');
@@ -467,8 +467,10 @@
   // obtener numero de Usuarios
   var NumUsuarios = sessionStorage.getItem('Usuarios');
   document.getElementById('TotalUsuarios').innerHTML += NumUsuarios;
+
+  console.log(sessionStorage.getItem('token'))
 </script>
   
-</script>
+
 </body>
 </html>
