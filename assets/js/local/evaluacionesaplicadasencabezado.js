@@ -2,6 +2,8 @@ var UrlApi = "http://localhost:64315/API/";
 //var UrlApi = "http://api-furlan.cetcom.edu.gt/api/";
 var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
+var IdEvaluacionEncabezado = "";
+var total = 0;
 
 
 function ObtenerInstituciones() {
@@ -95,14 +97,87 @@ function ObtenerEvaluacionesAplicadasEncabezados() {
             var fila = "<tr> <td>" + data.IdEvaluacionAplicadaEncabezado +
                 "</td><td>" + data.TxtInstitucion +
                 "</td><td>" + data.TxtEmpleado +
-                "</td><td>" + data.TxtTipoDeEvaluacion + //este yo lo agregue para no obtener el tipo de evaluacion por medio del idEncabezado. tambien modifique mi sp
+                "</td><td>" + data.TxtEvaluacionEncabezado + //este yo lo agregue para no obtener el tipo de evaluacion por medio del idEncabezado. tambien modifique mi sp
                 "</td><td>" + (data.FechaDeAplicacion).substring(0, 10) +
                 "</td><td class='text-center'><a href='#' onclick='ObtenerDatosEvaluacionAplicadaEncabezado(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#ModalEvaluacionDetalle'><i class='far fa-eye text-info'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='ObtenerDatosEvaluacionAplicadaEncabezado(" + data.IdEvaluacionAplicadaEncabezado + ");'><i class='fas fa-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='ObtenerEncabezadoAplicadoSeleccion(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#AgregarFactoresModal'><i class='fas fa-sliders-h text-info'></i></a>" +
+                "</td><td class='text-center'><a href='#' onclick='ObtenerEncabezadoAplicadoSeleccion(" + data.IdEvaluacionEncabezado + ");' data-toggle='modal' data-target='#AplicarEvaluacionDetalle'><i class='fas fa-sliders-h text-info'></i></a>" +
                 "</td><td class='text-center'><a href='#' onclick='EliminarEncabezadoAplicado(" + data.IdEvaluacionAplicadaEncabezado + ");' data-toggle='modal' data-target='#ModalConfirmacionEncabezado'><i class='fas fa-trash-alt text-danger'></i></a></tr>";
             $(fila).appendTo(".DatosEvaluacionesAplicadasEncabezados");
 
+        });
+    });
+}
+
+function ObtenerEncabezadoAplicadoSeleccion(IdEncabezado) {
+
+    IdEvaluacionEncabezado = IdEncabezado;
+    ObtenerEvaluacionDetalle(IdEncabezado);
+
+}
+
+function ObtenerEvaluacionDetalle(IdEncabezado) {
+    console.log(sessionStorage.getItem('token'));
+    $(".DatosFactores td").remove();
+
+    var settings = {
+        "url": UrlApi + "ObtenerFactoresUnicosPorEncabezado",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token'),
+            "IdEvaluacionEncabezado": IdEncabezado
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+
+
+        $.each(response, function(index, data) {
+
+            var factoresTabla =
+                "<tr><td class='text-center align-middle'>" + data.TxtFactor +
+                "</td><td><table Id='factor" + data.IdFactor + "'></table></td></tr>";
+            $(factoresTabla).appendTo(".DatosFactores");
+
+        });
+
+    });
+
+    ObtenerSubFactoresTabla(IdEncabezado);
+}
+
+function ObtenerSubFactoresTabla(IdEncabezado) {
+
+    var settings = {
+        "url": UrlApi + "ObtenerEvaluacionesDetalle",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "TxtToken": sessionStorage.getItem('token'),
+        }),
+    };
+
+    $.ajax(settings).done(function(response) {
+
+
+
+        $.each(response, function(index, data) {
+
+            console.log(data.TxtSubFactor + " " + data.IdFactor);
+
+            if (data.IdEvaluacionEncabezado == IdEncabezado) {
+                var subfactor = "<tr><td width='80%'>" + data.TxtSubFactor +
+                    "</td><td class='text-center'><input onchange='SumarPuntos();' type='number' class='form-control puntos' id='TxtPuntaje" + data.IdEvaluacionDetalle + "'></td></tr>";
+                $(subfactor).appendTo("#factor" + data.IdFactor);
+                console.log(subfactor);
+            }
         });
     });
 }
@@ -153,12 +228,21 @@ function LimpiarFormulario() {
     $("#FechaDeAplicacion").val("");
     $("#FechaInicial").val("");
     $("#FechaFinal").val("");
-   // $("#DblPunteoTotal").val("");
+    // $("#DblPunteoTotal").val("");
     //$("#TxtObservacionesDelJefe").val("");
-   // $("#TxtObservacionesDelEmpleado").val("");
-   // $("#IntNecesitaPlanDeMejora").val("");
+    // $("#TxtObservacionesDelEmpleado").val("");
+    // $("#IntNecesitaPlanDeMejora").val("");
 }
 
+function SumarPuntos() {
+    total = 0;
+    $(".puntos").each(
+        function() {
+            total = total + Number($(this).val());
+        }
+    );
+    $("#TxtPunteoTotal").val(total);
+}
 
 
 

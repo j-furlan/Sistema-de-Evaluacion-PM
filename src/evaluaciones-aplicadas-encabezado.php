@@ -151,56 +151,46 @@
   </a>
 
 
-  <!-- Agregar Factores Modal-->
-  <div class="modal fade" id="AgregarFactoresModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
+  <!-- Aplicar Evaluacion Detalle-->
+  <div class="modal fade" id="AplicarEvaluacionDetalle" tabindex="-1" role="dialog" aria-labelledby="exampleAddUserModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary align-items-center">
          <div class="mx-auto">
-           <h5 class="modal-title text-white" id="exampleAddUserModal">Agregar o Modificar Factores:</h5>
+           <h5 class="modal-title text-white" id="exampleAddUserModal">Ingresar Puntuaciones:</h5>
            <div class="text-primary bg-light text-center" id="EncabezadoSeleccionado"></div>
          </div>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormularioEvaluacionDetalle(); IdEvaluacionEncabezado ='';">
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick=" IdEvaluacionEncabezado ='';">
               <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
-        <form id="registroEvaluaciones">
-          <div class="form-group">
-              <label>Factor</label>
-              <select id="SelectFactor" class="form-control" onchange="ObtenerFactorSeleccion(this.value);">
-                <option >Elegir...</option>
-              </select>
-          </div>
-          <div class="form-group">
-            <label>SubFactor</label>
-              <select id="SelectSubFactor" class="form-control">
-                <option >Elegir...</option>
-              </select>
-          </div>
-      
-            <div class="text-center">
-              <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEvaluacionDetalle();">Cancelar</button>
-              <button type="button" class="btn btn-primary" onclick="AgregarEvaluacionDetalle();">Guardar</button>
-            </div>
-          </form>
+        
       
 
         </div>
         <div class="modal-footer">
           
         <div class="table-responsive">
-                  <table class="table table-bordered DatosFactores" id="" width="100%" cellspacing="0">
-                      <thead>
-                        <tr>
-                        <th>Factor</th>
-                        <th>SubFactor</th>
-                        </tr>
-                      </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
+            <table class="table table-bordered DatosFactores" id="" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Factor</th>
+                      <th>SubFactor</th>
+                    </tr>
+                  </thead>
+                <tbody></tbody>
+            </table>
+          </div>
+        </div>
 
+        <div class="form-group d-flex justify-content-end align-items-center pr-3">
+          <Label>Punteo Total:</Label>
+          <input class="m-2" disabled type="number" id="TxtPunteoTotal"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="" data-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
