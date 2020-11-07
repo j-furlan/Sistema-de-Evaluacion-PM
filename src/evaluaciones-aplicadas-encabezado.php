@@ -186,7 +186,7 @@
 
         <div class="form-group d-flex justify-content-end align-items-center pr-3">
           <Label>Punteo Total:</Label>
-          <input class="m-2" disabled type="number" id="TxtPunteoTotal"/>
+          <input class="m-2 text-center" disabled type="number" id="TxtPunteoTotal"/>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="" data-dismiss="modal">Guardar</button>

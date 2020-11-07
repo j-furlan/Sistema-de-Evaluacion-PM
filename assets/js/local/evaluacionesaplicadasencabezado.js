@@ -4,6 +4,7 @@ var ModalConfirmación = document.getElementById("ModalConfirmacion");
 var RegistroEliminar = "";
 var IdEvaluacionEncabezado = "";
 var total = 0;
+var ListaEvaluacionesDetalle = [];
 
 
 function ObtenerInstituciones() {
@@ -174,7 +175,7 @@ function ObtenerSubFactoresTabla(IdEncabezado) {
 
             if (data.IdEvaluacionEncabezado == IdEncabezado) {
                 var subfactor = "<tr><td width='80%'>" + data.TxtSubFactor +
-                    "</td><td class='text-center'><input onchange='SumarPuntos();' type='number' class='form-control puntos' id='TxtPuntaje" + data.IdEvaluacionDetalle + "'></td></tr>";
+                    "</td><td class='text-center'><input onchange='SumarPuntos(); AgregarEvaluacionAplicadaDetalle(" + IdEncabezado + "," + data.IdEvaluacionDetalle + ",\"" + sessionStorage.getItem("token") + "\");' type='number' class='form-control puntos' Id='TxtPuntaje" + data.IdEvaluacionDetalle + "'></td></tr>";
                 $(subfactor).appendTo("#factor" + data.IdFactor);
                 console.log(subfactor);
             }
@@ -219,6 +220,50 @@ function AgregarEvaluacionAplicadaEncabezado() {
         });
     });
 }
+
+function AgregarEvaluacionAplicadaDetalle(IdEvaluacionAplicadaEncabezado1, IdEvaluacionDetalle2, TxtToken4) {
+    var Id = "TxtPuntaje" + IdEvaluacionDetalle2;
+    var punteo = document.getElementById("" + Id + "").value;
+    /* var EvaluacionAplicadaDetalle = {
+        IdEvaluacionAplicadaEncabezado: IdEvaluacionAplicadaEncabezado1,
+        IdEvaluacionDetalle: IdEvaluacionDetalle2,
+        IdEscalaDeCalificacion: punteo,
+        TxtToken: TxtToken4
+    }
+
+    ListaEvaluacionesDetalle.push(EvaluacionAplicadaDetalle);
+    console.log(ListaEvaluacionesDetalle); */
+
+    var settings = {
+        "url": UrlApi + "AgregarEvaluacionAplicadaDetalle",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+
+            "IdEvaluacionAplicadaEncabezado": IdEvaluacionAplicadaEncabezado1,
+            "IdEvaluacionDetalle": IdEvaluacionDetalle2,
+            "IdEscalaDeCalificacion": Number(punteo),
+            "TxtToken": sessionStorage.getItem('token')
+        }),
+    };
+    $.ajax(settings).done(function(response) {
+        $.each(response, function(index, data) {
+            if (data.Resultado > 0) {
+                myNotification.showNotification('fas fa-smile', 'success', 'Exito!', 'Se aplicó la calificacion correctamente.');
+            } else {
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Algo no cuadro, no se agregó la calificacion.');
+            }
+        });
+
+    });
+
+
+}
+
+
 
 function LimpiarFormulario() {
     $("#IdOculto").val("");
