@@ -287,7 +287,8 @@ function ObtenerSubFactores(FactorSeleccionado) {
 
 
 function ObtenerEvaluacionDetalle(IdEncabezado) {
-    console.log(sessionStorage.getItem('token'));
+   
+    
     $(".DatosFactores td").remove();
 
     var settings = {
@@ -305,12 +306,10 @@ function ObtenerEvaluacionDetalle(IdEncabezado) {
 
     $.ajax(settings).done(function(response) {
 
-
         $.each(response, function(index, data) {
-
             var factoresTabla =
                 "<tr><td class='text-center align-middle'>" + data.TxtFactor +
-                "</td><td><table Id='factor" + data.IdFactor + "'></table></td></tr>";
+                "</td><td><table id='factor" + data.IdFactor + "'></table></td></tr>";
             $(factoresTabla).appendTo(".DatosFactores");
 
         });
@@ -337,15 +336,25 @@ function ObtenerSubFactoresTabla(IdEncabezado) {
     $.ajax(settings).done(function(response) {
 
 
+        var puntoTotal = response.length * 5;
+        //console.log(response.length);
+        //console.log(puntoTotal);
+        //PunteoDeEvalucion
+        $('#PunteoDeEvalucion').html(puntoTotal);
+        if((response.length) == 20){
+            $('#guadarFactorSubfactorBtn').prop("disabled", true);
+            setTimeout (function(){
+                myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Cantidad maxima de Factores/Subfactores agregados');
+            }, 1000);
+        }
         $.each(response, function(index, data) {
-
-            console.log(data.TxtSubFactor + " " + data.IdFactor);
+           // console.log(data.TxtSubFactor + " " + data.IdFactor);
 
             if (data.IdEvaluacionEncabezado == IdEncabezado) {
                 var subfactor = "<tr><td width='100%'>" + data.TxtSubFactor +
                     "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEvaluacionDetalle + ")' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a></td></tr>";
                 $(subfactor).appendTo("#factor" + data.IdFactor);
-                console.log(subfactor);
+                //console.log(subfactor);
             }
         });
     });

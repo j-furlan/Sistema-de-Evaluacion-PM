@@ -9,7 +9,7 @@ function MenuUsuarioLocal() {
 
     if (MenuDeUsuario !== "") {
         $.each(MenuDeUsuario, function(index, data) {
-
+//console.log(data);
             var IdMenuPadre = data.IdMenuPadre;
 
             if (IdMenuPadre == 0) {

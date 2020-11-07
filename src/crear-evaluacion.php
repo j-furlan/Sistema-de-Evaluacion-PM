@@ -132,7 +132,11 @@
       <div class="modal-content">
         <div class="modal-header bg-primary align-items-center">
          <div class="mx-auto">
-           <h5 class="modal-title text-white" id="exampleAddUserModal">Agregar o Modificar Factores:</h5>
+           <h5 class="modal-title text-white" id="exampleAddUserModal">
+             Agregar o Modificar Factores: 
+              <span class="ml-3 pr-2" style="background-color: red"> Punteo de Evaluacion:<span class="ml-2" id="PunteoDeEvalucion"></span></span>
+              
+            </h5>
            <div class="text-primary bg-light text-center" id="EncabezadoSeleccionado"></div>
          </div>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close" onclick="LimpiarFormularioEvaluacionDetalle(); IdEvaluacionEncabezado ='';">
@@ -156,7 +160,7 @@
       
             <div class="text-center">
               <button type="button" class="btn btn-danger" onclick="LimpiarFormularioEvaluacionDetalle();">Cancelar</button>
-              <button type="button" class="btn btn-primary" onclick="AgregarEvaluacionDetalle();">Guardar</button>
+              <button type="button" class="btn btn-primary" id="guadarFactorSubfactorBtn" onclick="AgregarEvaluacionDetalle();">Guardar</button>
             </div>
           </form>
       

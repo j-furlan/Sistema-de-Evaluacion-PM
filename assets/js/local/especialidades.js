@@ -39,6 +39,9 @@ function LimpiarFormulario() {
 }
 
 function ObtenerEspecialidades() {
+//function para verificar el accesso y permisos
+controlAccesso();
+
     $(".DatosEspecialidades td").remove();
 
     var settings = {
@@ -60,8 +63,8 @@ function ObtenerEspecialidades() {
             var fila = "<tr> <td>" + data.IdEspecialidad +
                 "</td><td>" + data.TxtEspecialidad +
                 "</td><td>" + (data.FechaIngreso).substring(0,10) + "</td>" +
-                "<td class='text-center'><a href='#' id='EditarEspecialidad' onclick='ObtenerDatosEspecialidad(" + data.IdEspecialidad + ");'><i class='fas fa-edit text-warning'></i></a>" +
-                "</td><td class='text-center'><a href='#' onclick='Eliminar(" + data.IdEspecialidad + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a></td> </tr>";
+                "<td class='text-center'><a href='#' id='btnEditarEspecialidad' onclick='ObtenerDatosEspecialidad(" + data.IdEspecialidad + ");'><i class='fas fa-edit text-warning'></i></a></td>" +
+                "<td class='text-center'><a href='#' id='btnEliminarEspecialidad' onclick='Eliminar(" + data.IdEspecialidad + ");' data-toggle='modal' data-target='#ModalConfirmacion'><i class='fas fa-trash-alt text-danger'></i></a></td> </tr>";
 
             $(fila).appendTo(".DatosEspecialidades");
         });
@@ -175,4 +178,39 @@ function Guardar() {
 function Eliminar(IdEspecialidad) {
     $("#IdOculto").val("Eliminar");
     RegistroEliminar = IdEspecialidad;
+}
+
+function controlAccesso(){
+    let MenuDeUsuario = JSON.parse(sessionStorage.getItem('ResultadoMenuDeUsuario'));
+    if (MenuDeUsuario[1] !== "") {
+        console.log(MenuDeUsuario[1]);
+        //console.log(MenuDeUsuario[1]["IdMenu"]);
+
+        var CurrentUserCan_Add = MenuDeUsuario[1]["Agregar"];
+        var CurrentUserCan_Edit = MenuDeUsuario[1]["ModificarActualizar"];
+        var CurrentUserCan_Delete = MenuDeUsuario[1]["Eliminar"];
+
+        console.log(CurrentUserCan_Add);
+        console.log(CurrentUserCan_Edit);
+        console.log(CurrentUserCan_Delete);
+
+        if(CurrentUserCan_Add == 0){
+            $('#btnAgregarEspecialidad').prop("disabled", true);
+            //$('#btnAgregarEspecialidad').hide();      
+        }
+        if(CurrentUserCan_Edit == 0){
+            $('#btnEditarEspecialidad').prop("disabled", true);
+            //$('#btnEditarEspecialidad').hide();      
+        }
+        if(CurrentUserCan_Delete == 0){
+            $('#btnEliminarEspecialidad').prop("disabled", true);
+            //$('#btnEditarEspecialidad').hide();      
+        }
+
+
+        
+    }else{
+        myNotification.showNotification('fas fa-heart-broken', 'danger', 'OOOPS !', 'Usted no ha iniciado session');
+        window.location.href = "../index.html";
+    }
 }

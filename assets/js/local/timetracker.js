@@ -22,7 +22,7 @@
               VerificarVigenciaToken();
               return false;
           } else {
-              console.log("hora Actual - " + horaActual + "\ntiempo De Inactividad " + tiempoDeInactividad + "\nsegundos De Inactividad " + segundosDeInactividad);
+             // console.log("hora Actual - " + horaActual + "\ntiempo De Inactividad " + tiempoDeInactividad + "\nsegundos De Inactividad " + segundosDeInactividad);
           }
       }
 
